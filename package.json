@@ -1,0 +1,34 @@
+{
+  "name": "mediaserver-node",
+  "version": "1.0.0",
+  "description": "Application created with Node.js to share multimedia content through a visual interface.",
+  "scripts": {
+    "dev": "nodemon src/index.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamcarlosmunoz/mediaserver-node.git"
+  },
+  "keywords": [
+    "Reactjs",
+    "Nodejs",
+    "Express"
+  ],
+  "author": "@iamcarlosmunoz",
+  "license": "GNU General Public License v3.0",
+  "bugs": {
+    "url": "https://github.com/iamcarlosmunoz/mediaserver-node/issues"
+  },
+  "homepage": "https://github.com/iamcarlosmunoz/mediaserver-node#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "nodemon": "^2.0.6"
+  }
+}
