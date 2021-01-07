@@ -1,15 +1,17 @@
 import React from 'react'
+
 import MainNavigation from '../MainNavigation'
 import MainHeader from '../MainHeader'
 
 import './normalize.css'
 import './styles.css'
 
-const AppLayout = ({ pathNumber, children }) => {
+const AppLayout = ({ children }) => {
+
 
     return (
         <div className="imposter imposter--center-x-start imposter--center-y-reverse">
-            <MainNavigation pathNumber={pathNumber} />
+            <MainNavigation />
             <main className="container container--long-width">
                 <MainHeader />
                 { children }

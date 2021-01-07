@@ -1,15 +1,16 @@
 import React from 'react'
+import { Route, Switch } from "wouter";
 
 import AppLayout from './components/AppLayout'
-import MainSection from './components/MainSection'
+import HomePage from './pages/Home'
 
 const App = () => {
 
     return (
-        <AppLayout pathNumber={1} >
-            <MainSection titleSection={'Peliculas Agregadas'}>
-                
-            </MainSection>
+        <AppLayout>
+            <Switch>
+                <Route component={HomePage} path="/" />
+            </Switch>
         </AppLayout>
     )
 }
