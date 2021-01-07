@@ -1,11 +1,17 @@
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>MediaServer</h1>
-    </div>
-  );
+import AppLayout from './components/AppLayout'
+import MainSection from './components/MainSection'
+
+const App = () => {
+
+    return (
+        <AppLayout pathNumber={1} >
+            <MainSection titleSection={'Peliculas Agregadas'}>
+                
+            </MainSection>
+        </AppLayout>
+    )
 }
 
-export default App;
+export default App
