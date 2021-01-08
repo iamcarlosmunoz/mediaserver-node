@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from "wouter";
 
 import AppLayout from './components/AppLayout'
-import HomePage from './pages/Home'
+import HomePage from './pages/HomePage'
 
 const App = () => {
 

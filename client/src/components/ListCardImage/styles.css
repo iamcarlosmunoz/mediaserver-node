@@ -1,0 +1,6 @@
+.list-card-image {
+    margin-top: 1.5em;
+    white-space: nowrap;
+    overflow-y: hidden; 
+    overflow-x: auto;
+}
