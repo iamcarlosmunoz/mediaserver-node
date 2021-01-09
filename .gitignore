@@ -103,3 +103,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# folder JSON data
+src/data/movies.json

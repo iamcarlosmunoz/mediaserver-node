@@ -1,0 +1,28 @@
+/* ------------ Stars and Rancking ----------- */
+.stars__list {
+    width: fit-content;
+    margin-top: 0.2em;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.stars__rancking {
+    padding: 0.5em;
+    margin-right: 0.5em;
+    background-color: #ffd717;
+    color: #222;
+    border-radius: 0.625em;
+    font-weight: 800;
+}
+
+.stars__icon {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.5em;
+}
+
+.stars__icon--dark path {
+    fill: #222;
+}

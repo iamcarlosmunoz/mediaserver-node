@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <>
             <MainSection titleSection={'Peliculas Agregadas'}>
-                <ListCardImage />
+                <ListCardImage typeMedia={'movies'}/>
             </MainSection>
         </>
     )
