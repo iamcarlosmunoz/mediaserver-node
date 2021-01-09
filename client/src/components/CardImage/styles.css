@@ -16,7 +16,7 @@
 
 .card-image__button {
     position: absolute;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     top: 0;
@@ -25,6 +25,8 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease 0s;
 }
 
 .card-image__icon {
@@ -38,14 +40,27 @@
     transition: fill 0.3s ease;
 }
 
-.card-image__button:hover .card-image__icon {
+.card-image__icon:hover {
     transform: scale(1.5);
 }
 
-.card-image__button:hover .card-image__icon path {
-    fill: #ffd717;
+.card-image:hover .card-image__button {
+    opacity: 1;
 }
 
-.card-image:hover .card-image__button {
-    display: flex;
+.card-image__tag {
+    position: absolute;
+    top: 0.8em;
+    left: 0.8em;
+    padding: 0.4em 0.6em;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.card-image__tag--color-movie {
+    background-color: #ffd717;
+}
+
+.card-image__tag--color-serie {
+    background-color: #17b6ff;
 }
