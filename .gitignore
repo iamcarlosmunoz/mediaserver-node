@@ -106,4 +106,4 @@ dist
 
 # folder JSON data
 src/data/movies.json
-src/data/genres.json
+src/data/movies-genres.json
