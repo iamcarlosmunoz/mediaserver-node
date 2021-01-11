@@ -1,63 +1,87 @@
-import React, { useState } from 'react'
-import './styles.css'
+import React, { useState } from "react"
+import { useLocation } from 'wouter'
+import "./Detail.css"
 
-import MainSection from '../../components/MainSection'
-import useSingleMedia from '../../hooks/useSingleMedia'
-import InfoRanking from '../../components/InfoRanking'
-import VideoPlayer from '../../components/VideoPlayer'
-
-const styleSidebar = ({ media }) => {
-    const bgImageSidebar = `linear-gradient(rgba(255, 255, 255, 0),rgba(0, 0, 0, 1)),url(https://image.tmdb.org/t/p/original${media.backdrop_path})`
-    const bgImageWallpaper = `url(https://image.tmdb.org/t/p/w500${media.poster_path})`
-    return { bgImageSidebar, bgImageWallpaper}
-}
+import MainSection from "../../components/MainSection"
+import useSingleMedia from "../../hooks/useSingleMedia"
+import InfoRanking from "../../components/InfoRanking"
+import VideoPlayer from "../../components/VideoPlayer"
+import ButtonCheck from "../../components/ButtonCheck"
+import ButtonNormal from "../../components/ButtonNormal"
 
 const Detail = ({ params }) => {
 
+    const [ , pushLocation ] = useLocation()
     const [ typeMedia ] = useState((/\w[a-z]+/).exec(window.location.pathname)[0])
-    const [ replay ] = useState(false)
     const { media } = useSingleMedia({ typeMedia, id: params.id })
-    const { bgImageSidebar, bgImageWallpaper } = styleSidebar({ media })
     const [ activePlayerVideo, setActivePlayerVideo ] = useState(false)
+    const [ replay ] = useState(false)
+    const bgImageSidebar = `https://image.tmdb.org/t/p/original${ media.backdrop_path }`
+    const bgImageCard = `https://image.tmdb.org/t/p/w500${ media.poster_path }`
 
     const handleWatchMedia = (e) => {
         setActivePlayerVideo(true)
     }
 
+    const handleOnClick = (e) => {
+        pushLocation("/")
+    }
+
     return (
         <MainSection>
-            <div className="sidebar" style={{ backgroundImage: (media.backdrop_path !== undefined) ? bgImageSidebar : ''}}>
-                <div className="sidebar__wallpaper" style={{ backgroundImage: (media.backdrop_path !== undefined) ? bgImageWallpaper : ''}}>
-                    { <span className="sidebar__tag-media sidebar__tag-media--color-movie">Pelicula</span> }
-                </div>
-                <div className="sidebar__button-group">
-                    { replay && <button className="sidebar__button sidebar__button--replay" type="button" onClick={handleWatchMedia}>
-                        <svg className="sidebar__icon sidebar__icon--replay" x="0px" y="0px" viewBox="0 0 305.836 305.836">
-                            <title>Reiniciar Medio</title>
-                            <path d="M152.924,300.748c84.319,0,152.912-68.6,152.912-152.918c0-39.476-15.312-77.231-42.346-105.564c0,0,3.938-8.857,8.814-19.783c4.864-10.926-2.138-18.636-15.648-17.228l-79.125,8.289c-13.511,1.411-17.999,11.467-10.021,22.461l46.741,64.393c7.986,10.992,17.834,12.31,22.008,2.937l7.56-16.964c12.172,18.012,18.976,39.329,18.976,61.459c0,60.594-49.288,109.875-109.87,109.875c-60.591,0-109.882-49.287-109.882-109.875c0-19.086,4.96-37.878,14.357-54.337c5.891-10.325,2.3-23.467-8.025-29.357c-10.328-5.896-23.464-2.3-29.36,8.031C6.923,95.107,0,121.27,0,147.829C0,232.148,68.602,300.748,152.924,300.748z"/>
-                        </svg>
-                    </button> }
-                    <button className="sidebar__button sidebar__button--play" type="button" onClick={handleWatchMedia}>
-                        <svg className="sidebar__icon" x="0px" y="0px" viewBox="0 0 320.001 320.001">
-                            <title>Reproducir Medio</title>
-                            <path d="M295.84,146.049l-256-144c-4.96-2.784-11.008-2.72-15.904,0.128C19.008,5.057,16,10.305,16,16.001v288c0,5.696,3.008,10.944,7.936,13.824c2.496,1.44,5.28,2.176,8.064,2.176c2.688,0,5.408-0.672,7.84-2.048l256-144c5.024-2.848,8.16-8.16,8.16-13.952S300.864,148.897,295.84,146.049z"/>
-                        </svg>
-                        Reproducir <span className="sidebar__button--progress"><span className="sidebar__button--bar"></span></span>
-                    </button>
+            <div className="sidebar">
+                <div className="sidebar__background">
+                    <img className="sidebar__img-bg" src={(media.backdrop_path !== undefined) ? bgImageSidebar : ""} alt={media.title + "wallpaper"}/>
+                    <div className="sidebar__solid-color"></div>
+                    <div className="sidebar__solid-color"></div>
+                    <div className="sidebar__solid-color"></div>
 
+                    <div className="sidebar__content">
+                        <button className="sidebar__button-back" onClick={ handleOnClick }>
+                            <svg className="sidebar__icon-button-back" x="0px" y="0px" viewBox="0 0 492 492">
+                                <path d="M464.344,207.418l0.768,0.168H135.888l103.496-103.724c5.068-5.064,7.848-11.924,7.848-19.124c0-7.2-2.78-14.012-7.848-19.088L223.28,49.538c-5.064-5.064-11.812-7.864-19.008-7.864c-7.2,0-13.952,2.78-19.016,7.844L7.844,226.914C2.76,231.998-0.02,238.77,0,245.974c-0.02,7.244,2.76,14.02,7.844,19.096l177.412,177.412c5.064,5.06,11.812,7.844,19.016,7.844c7.196,0,13.944-2.788,19.008-7.844l16.104-16.112c5.068-5.056,7.848-11.808,7.848-19.008c0-7.196-2.78-13.592-7.848-18.652L134.72,284.406h329.992c14.828,0,27.288-12.78,27.288-27.6v-22.788C492,219.198,479.172,207.418,464.344,207.418z"/>
+                            </svg>
+                        </button>
+                        <div className="sidebar__header">
+                            <div className="sidebar__poster">
+                                <div className="sidebar__poster-container">
+                                    <div className="sidebar__card">
+                                        <img className="sidebar__card-img" src={(media.poster_path !== undefined) ? bgImageCard : ""} alt={media.title}/>
+                                        <span className="sidebar__card-info">
+                                            { typeMedia === "movies" && "Película" }
+                                            { typeMedia === "series" && "Serie" }
+                                        </span> 
+                                    </div>
+                                    <InfoRanking ranking={ media.vote_average } />
+                                </div>
+                            </div>
+                            <div className="sidebar__info">
+                                <div className="sidebar__container--title">
+                                    <h2 className="sidebar__title">{ media.title }</h2>
+                                    <div className="sidebar__bar-progress">
+                                        <div className="sidebar__bar"></div>
+                                    </div>
+                                </div>
+                                <div className="sidebar__container-overview">
+                                    <p className="sidebar__overview">{ media.overview }</p>
+                                    <div className="sidebar__container-tags">
+                                        <span className="sidebar__tag">2020</span>
+                                        <span className="sidebar__tag">Aventura</span>
+                                        <span className="sidebar__tag">Drama</span>
+                                        <span className="sidebar__tag">Familia</span>
+                                    </div>
+                                </div>
+                                <div className="sidebar__container-buttons">
+                                    <ButtonNormal onClick={ handleWatchMedia } />
+                                    { replay && <ButtonNormal value="Volver A Ver" marginLeft="0.5em"/>}
+                                    <ButtonCheck />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="movie-info">
-                <div className="movie-info__titles">
-                    <h2 className="movie-infor__title-movie">{media.title}</h2>
-                    <InfoRanking ranking={media.vote_average} />
-                </div>
-                <div className="movie-info__overview">
-                    <h3 className="movie-info__title">Resumen</h3>
-                    <p className="movie-info__description">{media.overview}</p>
-                </div>
-            </div>
-            { activePlayerVideo && <VideoPlayer typeMedia={typeMedia} idMedia={params.id} handleExit={setActivePlayerVideo}/> }
+            { activePlayerVideo && <VideoPlayer typeMedia={ typeMedia } idMedia={ params.id } handleExit={ setActivePlayerVideo }/> }
         </MainSection>
     )
 }

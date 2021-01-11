@@ -6,6 +6,7 @@
     align-items: center;
     background-color: #fff;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .stars__rancking {
@@ -18,7 +19,7 @@
     min-height: 2.1875em;
     background-color: #ffd717;
     color: #222;
-    border-radius: 0.625em;
+    border-radius: 10px;
     font-weight: 800;
 }
 
