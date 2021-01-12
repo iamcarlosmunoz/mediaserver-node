@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useLocation } from 'wouter'
+import { useLocation } from "wouter"
 import "./Detail.css"
 
 import MainSection from "../../components/MainSection"
@@ -8,6 +8,7 @@ import InfoRanking from "../../components/InfoRanking"
 import VideoPlayer from "../../components/VideoPlayer"
 import ButtonCheck from "../../components/ButtonCheck"
 import ButtonNormal from "../../components/ButtonNormal"
+import ListTags from "../../components/ListTags"
 
 const Detail = ({ params }) => {
 
@@ -64,12 +65,7 @@ const Detail = ({ params }) => {
                                 </div>
                                 <div className="sidebar__container-overview">
                                     <p className="sidebar__overview">{ media.overview }</p>
-                                    <div className="sidebar__container-tags">
-                                        <span className="sidebar__tag">2020</span>
-                                        <span className="sidebar__tag">Aventura</span>
-                                        <span className="sidebar__tag">Drama</span>
-                                        <span className="sidebar__tag">Familia</span>
-                                    </div>
+                                    <ListTags releaseDate={ media.release_date } typeMedia={ typeMedia } tags={ media.genre_ids } />
                                 </div>
                                 <div className="sidebar__container-buttons">
                                     <ButtonNormal onClick={ handleWatchMedia } />

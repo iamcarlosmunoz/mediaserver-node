@@ -105,5 +105,4 @@ dist
 .tern-port
 
 # folder JSON data
-src/data/movies.json
-src/data/movies-genres.json
+src/data/

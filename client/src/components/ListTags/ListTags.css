@@ -1,0 +1,17 @@
+.ms__container-tags {
+    width: 90%;
+    margin-top: 1em;
+    text-align: left;
+}
+
+.ms__tag {
+    min-height: 1.71125em;
+    padding: 0.2em 0.6em;
+    background-color: #e7ecee52;
+    margin-right: 0.2em;
+    font-weight: 600;
+    border-radius: 20px;
+    color: #f8f8f8;
+    text-decoration: none;
+}
+
