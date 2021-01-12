@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
-import MainNavigation from '../MainNavigation'
-import MainHeader from '../MainHeader'
+import MainNavigation from "../MainNavigation"
+import MainHeader from "../MainHeader"
 
-import './normalize.css'
-import './styles.css'
+import "./normalize.css"
+import "./AppLayout.css"
 
 const AppLayout = ({ children }) => {
 

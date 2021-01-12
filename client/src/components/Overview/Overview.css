@@ -1,0 +1,27 @@
+.sm__container-overview {
+    width: 90%;
+}
+
+.sm__container-overview--full {
+    width: 100%;
+}
+
+.sm__overview {
+    margin-top: 0.6em;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 300;
+    text-align: justify;
+}
+
+@media (min-width: 1366px) {
+    .sm__container-overview--full {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .sm__container-overview--full {
+        font-size: 24px;
+    }
+}

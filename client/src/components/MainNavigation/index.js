@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 import { Link , useLocation } from "wouter";
-import './styles.css'
+import "./MainNavigation.css"
 
 const MainNavigation = () => {
 
@@ -10,7 +10,7 @@ const MainNavigation = () => {
     return (
         <nav className="main-nav">
             <ul className="main-nav__list">
-                <li className={`main-nav__item ${location === '/' ? "main-nav__item--active" : " "}`}>
+                <li className={`main-nav__item ${location === "/" ? "main-nav__item--active" : ""}`}>
                     <Link href="/">
                         <a className="main-nav__link focus--box-shadow" role="button" href="#home">
                             <svg className="main-nav__icon" role="img" x="0px" y="0px" viewBox="0 0 176.532 176.532">
@@ -22,7 +22,7 @@ const MainNavigation = () => {
                     </Link>
                 </li>
 
-                <li className={`main-nav__item ${location === '/movies' ? "main-nav__item--active" : " "} main-nav__item--margin-top`}>
+                <li className={`main-nav__item ${location === "/movies" ? "main-nav__item--active" : ""} main-nav__item--margin-top`}>
                     <Link href="/">
                         <a className="main-nav__link focus--box-shadow" role="button" href="#home">
                             <svg className="main-nav__icon" role="img" x="0px" y="0px" viewBox="0 0 142.448 142.448">
@@ -34,7 +34,7 @@ const MainNavigation = () => {
                     </Link>
                 </li>
 
-                <li className={`main-nav__item ${location === '/series' ? "main-nav__item--active" : " "} main-nav__item--margin-top`}>
+                <li className={`main-nav__item ${location === "/series" ? "main-nav__item--active" : ""} main-nav__item--margin-top`}>
                     <Link href="/">
                         <a className="main-nav__link focus--box-shadow" role="button" href="#home">
                             <svg className="main-nav__icon" role="img" x="0px" y="0px" viewBox="0 0 193 193">
@@ -45,7 +45,7 @@ const MainNavigation = () => {
                     </Link>
                 </li>
 
-                <li className={`main-nav__item ${location === '/settings' ? "main-nav__item--active" : " "} main-nav__item--margin-top`}>
+                <li className={`main-nav__item ${location === "/settings" ? "main-nav__item--active" : ""} main-nav__item--margin-top`}>
                     <Link href="/">
                         <a className="main-nav__link focus--box-shadow" role="button" href="#home">
                             <svg className="main-nav__icon" role="img" x="0px" y="0px" viewBox="0 0 168.112 168.112">
@@ -57,7 +57,7 @@ const MainNavigation = () => {
                     </Link>
                 </li>
 
-                <li className={`main-nav__item ${location === '/new' ? "main-nav__item--active" : " "} main-nav__item--margin-top`}>
+                <li className={`main-nav__item ${location === "/upload" ? "main-nav__item--active" : ""} main-nav__item--margin-top`}>
                     <Link href="/">
                         <a className="main-nav__link focus--box-shadow" role="button" href="#home">
                             <svg className="main-nav__icon" role="img" x="0px" y="0px" viewBox="0 0 208.86 208.86">

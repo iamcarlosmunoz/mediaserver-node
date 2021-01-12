@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import './ButtonCheck.css'
+import React, { useState } from "react"
+import "./ButtonCheck.css"
 
 const ButtonCheck = ({ state = false, onClick }) => {
 

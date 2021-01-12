@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 import { Route, Switch } from "wouter";
 
-import AppLayout from './components/AppLayout'
-import HomePage from './pages/HomePage'
-import Detail from './pages/Detail'
+import AppLayout from "./components/AppLayout"
+import HomePage from "./pages/HomePage"
+import Detail from "./pages/Detail"
 
 const App = () => {
 

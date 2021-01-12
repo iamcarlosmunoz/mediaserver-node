@@ -1,7 +1,7 @@
-import React from 'react'
-import './styles.css'
+import React from "react"
+import "./InfoRanking.css"
 
-import Star from './Star'
+import Star from "./Star"
 
 const InfoRanking = ({ ranking }) => {
 

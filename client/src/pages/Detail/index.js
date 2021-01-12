@@ -8,7 +8,7 @@ import InfoRanking from "../../components/InfoRanking"
 import VideoPlayer from "../../components/VideoPlayer"
 import ButtonCheck from "../../components/ButtonCheck"
 import ButtonNormal from "../../components/ButtonNormal"
-import ListTags from "../../components/ListTags"
+import Overview from "../../components/Overview"
 
 const Detail = ({ params }) => {
 
@@ -63,10 +63,12 @@ const Detail = ({ params }) => {
                                         <div className="sidebar__bar"></div>
                                     </div>
                                 </div>
-                                <div className="sidebar__container-overview">
-                                    <p className="sidebar__overview">{ media.overview }</p>
-                                    <ListTags releaseDate={ media.release_date } typeMedia={ typeMedia } tags={ media.genre_ids } />
-                                </div>
+                                <Overview 
+                                    overview={media.overview} 
+                                    release_date={media.release_date} 
+                                    typeMedia={typeMedia} 
+                                    genre_ids={media.genre_ids} 
+                                />
                                 <div className="sidebar__container-buttons">
                                     <ButtonNormal onClick={ handleWatchMedia } />
                                     { replay && <ButtonNormal value="Volver A Ver" marginLeft="0.5em"/>}
@@ -77,7 +79,7 @@ const Detail = ({ params }) => {
                     </div>
                 </div>
             </div>
-            { activePlayerVideo && <VideoPlayer typeMedia={ typeMedia } idMedia={ params.id } handleExit={ setActivePlayerVideo }/> }
+            { activePlayerVideo && <VideoPlayer typeMedia={ typeMedia } mediaData={ media } handleExit={ setActivePlayerVideo }/> }
         </MainSection>
     )
 }

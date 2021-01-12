@@ -19,14 +19,13 @@
     transform: translateY(100%);
     transition: all 0.3s ease;
 }
-
-/* .video-player__controls:hover {
-    transform: translateY(0);
+.video-player__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7em;
 }
-
-.video-player__hover-controls:hover ~ .video-player__controls {
-    transform: translateY(0);
-} */
 
 .video-player__controls.video-player__hover:hover,
 .video-player__hover-controls.video-player__hover:hover ~ .video-player__controls {
@@ -59,12 +58,10 @@
     border: 0;
     outline: 0;
     cursor: pointer;
-    padding: 0.625em;
-    margin-left: 0.625em;
+    padding-right: 3.5em;
 }
 
 .video-player__btn-exit {
-    position: absolute;
     background: #3b3b3b;
     border: 0;
     border-radius: 0.625em;
@@ -74,8 +71,6 @@
     color: #fff;
     font-weight: 700;
     font-size: 1em;
-    right: 1.25em;
-    top: 2.375em;
     transition: all 0.3s ease;
 }
 
@@ -90,9 +85,65 @@
     left: 0;
     width: 100%;
     background-color: #8f8f8f;
+    cursor: pointer;
 }
 
 .video-player__bar-progress {
     height: 1.5625em;
     background-color: #ffd717;
+}
+
+.video-player__time {
+    color: #fff;
+}
+
+.video-player__container-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 5em);
+    background: linear-gradient(to left, transparent,#000);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.video-player__container-title--hover {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.video-player__title {
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+
+.video-player__img {
+    width: 13.5em;
+    height: 20.75em;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-player__container-info {
+    width: 50%;
+    margin-left: 2.5em;
+}
+
+@media (min-width: 1366px) {
+    .video-player {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .video-player {
+        font-size: 24px;
+    }
 }

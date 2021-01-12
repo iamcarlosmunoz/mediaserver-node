@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 export default function useEventListener (target, type, listener, ...options) {
     useEffect(
