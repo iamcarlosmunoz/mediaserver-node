@@ -1,4 +1,5 @@
 .card-image {
+    font-size: 14px;
     display: inline-block;
     width: 13.75em;
     height: 20em;
@@ -55,12 +56,11 @@
     padding: 0.4em 0.6em;
     border-radius: 5px;
     font-weight: 700;
+    background-color: #fff;
 }
 
-.card-image__tag--color-movie {
-    background-color: #ffd717;
-}
-
-.card-image__tag--color-serie {
-    background-color: #17b6ff;
+@media (max-width: 768px) {
+    .card-image {
+        font-size: 1em;
+    }
 }
