@@ -8,6 +8,7 @@
     border: 0;
     background: none;
     margin-left: 0.5em;
+    cursor: pointer;
 }
 
 .ms__only-icon-button {
