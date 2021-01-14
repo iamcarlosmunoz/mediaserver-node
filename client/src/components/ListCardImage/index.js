@@ -12,10 +12,16 @@ const ListCardImage = ({ typeMedia = "" }) => {
     const [media, setMedia] = useState(null)
 
     useEffect(function () {
+
+        let mounted = true
+        
         getMedia({ typeMedia })
             .then(result => {
-                setMedia(result)
+                if(mounted) setMedia(result)
             })
+
+        return () => mounted = false 
+        
     }, [typeMedia])
 
     return ( 

@@ -10,7 +10,7 @@
 
 .main-header__search {
     display: flex;
-    width: 100%;
+    width: auto;
     background-color:#e9e8ec;
     border-radius: 15px;
 }

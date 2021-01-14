@@ -31,6 +31,13 @@ body {
     justify-content: center;
 }
 
+.imposter--center {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 @media (max-width: 768px) {
 
     body {

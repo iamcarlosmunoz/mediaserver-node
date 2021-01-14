@@ -6,12 +6,17 @@ export default function useGenres ({ tags = [] }) {
   const [genres, setGenres] = useState([])
 
   useEffect(function () {
-    getGenres({ })
+
+    let mounted = true
+
+    getGenres()
       .then(data => {
-        setGenres(data.filter(element => tags.find( tag => tag === element.id)))
+        if (mounted) setGenres(data.filter(element => tags.find( tag => tag === element.id)))
       }).catch(err => {
         console.error("useGenres: ", err)
       })
+
+    return () => mounted = false
   }, [ tags ])
 
   return { genres }
