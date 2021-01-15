@@ -3,7 +3,7 @@ import getUsers from "../services/getUsers"
 
 export default function useGenres () {
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState(null)
 
   useEffect(function () {
     getUsers()

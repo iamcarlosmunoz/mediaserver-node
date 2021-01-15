@@ -14,7 +14,9 @@ export default function useGlobalUser () {
     }, [setUser])
 
     const updateUserState = useCallback(() => {
-        uploadUser(user)
+        if (user) {
+            uploadUser(user)
+        }
     }, [user])
 
     const updateMovieStatus = useCallback((data) => {

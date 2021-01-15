@@ -1,11 +1,13 @@
 import React from "react"
+import { useLocation } from "wouter"
+
 import "../../components/AppLayout/normalize.css"
 import "../../components/AppLayout/AppLayout.css"
 import "./Login.css"
-import Img2 from "../../images/users/0001.jpg"
+
 import useUsers from "../../hooks/useUsers"
 import useGlobalUser from "../../hooks/useGlobalUser"
-import { useLocation } from "wouter"
+import SkeletonCardUser from "./SkeletonCardUser"
 
 const Login = () => {
 
@@ -23,10 +25,13 @@ const Login = () => {
             <h1 className="login__title">¿Quién está mirando?</h1>
             <div className="user">
                 {
-                    users.map(element => <button className="user__item" onClick={() => handleClick(element.id)} key={ element.name }>
-                        <div className="user__img-container"><img className="user__img" src={Img2} alt={element.id}/></div>
+                    users && users.map(element => <button className="user__item" onClick={() => handleClick(element.id)} key={ element.name }>
+                        <div className="user__img-container"><img className="user__img" src={element.img} alt={element.id}/></div>
                         <h3 className="user__name">{element.name}</h3>
                     </button>)
+                }
+                {
+                    !users && <SkeletonCardUser /> 
                 }
             </div>
         </div>

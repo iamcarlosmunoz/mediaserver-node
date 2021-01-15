@@ -14,6 +14,7 @@ app.set("port", config.serverPort || 4000)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static("client/build/"));
+app.use("/img", express.static(path.join(__dirname, "images/")));
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"))
@@ -24,5 +25,9 @@ app.get("/api/genres", (req, res) => {
 
 app.use("/api/movies", MoviesRoutes)
 app.use("/api/users", UsersRoutes)
+
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, ".." ,"client/build/index.html"))
+});
 
 export default app

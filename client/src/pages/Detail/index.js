@@ -17,9 +17,9 @@ const Detail = ({ params }) => {
     const [ , pushLocation ] = useLocation()
     const [ typeMedia ] = useState((/\w[a-z]+/).exec(window.location.pathname)[0])
     const { media } = useSingleMedia({ typeMedia, id: params.id })
-    const { user, getTimeMovieWatching } = useGlobalUser()
+    const { getTimeMovieWatching, updateUserState } = useGlobalUser()
     const [ activePlayerVideo, setActivePlayerVideo ] = useState(false)
-    const [ replay ] = useState(false)
+    const [ replay, setReplay ] = useState(false)
     const bgImageSidebar = `https://image.tmdb.org/t/p/original${ media.backdrop_path }`
     const bgImageCard = `https://image.tmdb.org/t/p/w500${ media.poster_path }`
     const barProgress = useRef(null)
@@ -39,8 +39,12 @@ const Detail = ({ params }) => {
     useEffect(function() {
         const { timeCurrent, timeDuration } = getTimeMovieWatching(media.id)
         barProgress.current.style.width = ( timeCurrent / timeDuration ) * 100 + "%"
+
+        setReplay( () => timeCurrent > 0 ? true: false )
+
+        return () => updateUserState()
         
-    }, [user, getTimeMovieWatching, media.id])
+    }, [ getTimeMovieWatching, media.id, setReplay, updateUserState])
 
     return (
         <AppLayout>
@@ -85,7 +89,7 @@ const Detail = ({ params }) => {
                                         genre_ids={media.genre_ids} 
                                     />
                                     <div className="sidebar__container-buttons">
-                                        <ButtonNormal onClick={ handleWatchMedia } />
+                                        <ButtonNormal value={ replay ? "Reanudar" : "Reproducir"} onClick={ handleWatchMedia } />
                                         { replay && <ButtonNormal value="Volver A Ver" marginLeft="0.5em"/>}
                                         <ButtonCheck />
                                     </div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import './styles.css'
 
-import ImageProfile from "../../images/users/0001.jpg"
 import useGlobalUser from "../../hooks/useGlobalUser"
 import { useLocation } from "wouter"
 
@@ -34,7 +33,7 @@ const MainHeader = () => {
                     </form>
                     <button className="account-btn focus--box-shadow" type="button" onClick={handleClick}>
                         <span className="account-btn__name">{ user.name }</span>
-                        <img className="account-btn__img" src={ImageProfile} alt={ImageProfile} loading="lazy"/>
+                        <img className="account-btn__img" src={user.img} alt={user.name} loading="lazy"/>
                     </button>
                 </header>
             }

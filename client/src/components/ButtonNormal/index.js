@@ -1,20 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./ButtonNormal.css"
 
-const ButtonNormal = ({ value = "Reproducir", marginLeft = "0px", onClick }) => {
+const ButtonNormal = ({ value, marginLeft = "0px", onClick }) => {
 
-    const [ valueButton, setValueButton ] = useState(value) 
+    const [ valueButton, setValueButton ] = useState("Reproducir") 
 
-    const handleClick = (e) =>  {
-        if (value !== "Volver A Ver") {
-            if (valueButton === "Reproducir")
-                setValueButton("Reanudar")
-            else if (valueButton === "Reanudar")
-                setValueButton("Reproducir")
-
+    const handleClick = () =>  {
+        if (valueButton !== "Volver A Ver") {
             onClick()
         }
     }
+
+    useEffect(function() {
+        setValueButton(value)
+    }, [value])
 
     return (
         <button className="ms__button" onClick={handleClick} style={{ marginLeft: marginLeft}}>

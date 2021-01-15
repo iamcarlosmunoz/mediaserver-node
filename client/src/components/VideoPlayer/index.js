@@ -9,7 +9,7 @@ import useGlobalUser from "../../hooks/useGlobalUser"
 const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
 
     const [ stateVideoPlayer, setStateVideoPlayer ] = useState("pause")
-    const { updateMovieStatus, getTimeMovieWatching, updateUserState } = useGlobalUser()
+    const { updateMovieStatus, getTimeMovieWatching} = useGlobalUser()
     const [ timeVideo, setTimeVideo] = useState({ timeCurrent: 0, time: 0})
     const video = useRef(null)
     const containerInfo = useRef(null)
@@ -100,11 +100,7 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
         setStateVideoPlayer("play")
         video.current.play()
 
-        return () => {
-            updateUserState()
-        }
-
-    }, [ getTimeMovieWatching, mediaData.id, typeMedia, updateUserState ])
+    }, [ getTimeMovieWatching, mediaData.id, typeMedia ])
 
     useEventListener(video, "timeupdate", handleBarProgress)
     useEventListener(video, "click", handlePlayPauseVideo)

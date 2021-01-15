@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Application created with Node.js to share multimedia content through a visual interface.",
   "scripts": {
-    "dev": "nodemon --ignore client/ src/index.js --exec babel-node"
+    "dev": "nodemon --ignore client/ --ignore src/data/ src/index.js --exec babel-node"
   },
   "repository": {
     "type": "git",
