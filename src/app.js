@@ -2,8 +2,9 @@ import express from "express"
 import path from "path"
 import bodyParser from "body-parser"
 import config from "./config"
-import MoviesRoutes from "./routes/movies.routes"
-import UsersRoutes from "./routes/users.routes"
+import moviesRoutes from "./routes/movies.routes"
+import usersRoutes from "./routes/users.routes"
+import authRoutes from "./routes/auth.routes"
 
 const app = express()
 
@@ -21,8 +22,9 @@ app.get("/api/genres", (req, res) => {
     res.sendFile(path.join(__dirname, "data/genres.json"))
 })
 
-app.use("/api/movies", MoviesRoutes)
-app.use("/api/users", UsersRoutes)
+app.use("/api/movies", moviesRoutes)
+app.use("/api/users", usersRoutes)
+app.use("/api/auth", authRoutes)
 
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "client/build/index.html"))
