@@ -10,7 +10,7 @@ const ListTags = ({ typeMedia, releaseDate, tags }) => {
 
     return (
         <div className="ms__container-tags">
-            <Tag data={ releaseDate } date={ true }/>
+            <Tag data={releaseDate} date={true} />
             { genres.map(element => <Tag data={element} key={element.id} typeMedia={typeMedia} />)}
         </div>
     )

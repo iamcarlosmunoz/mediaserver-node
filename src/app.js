@@ -1,5 +1,4 @@
 import express from "express"
-import cors from "cors"
 import path from "path"
 import bodyParser from "body-parser"
 import config from "./config"
@@ -8,7 +7,6 @@ import UsersRoutes from "./routes/users.routes"
 
 const app = express()
 
-app.use(cors())
 app.set("port", config.serverPort || 4000)
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -27,7 +25,7 @@ app.use("/api/movies", MoviesRoutes)
 app.use("/api/users", UsersRoutes)
 
 app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, ".." ,"client/build/index.html"))
+    res.sendFile(path.join(__dirname, "..", "client/build/index.html"))
 });
 
 export default app

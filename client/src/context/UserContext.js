@@ -2,12 +2,12 @@ import React, { useState } from "react"
 
 const Context = React.createContext({})
 
-export function UserProvider ({ children }) {
+export function UserProvider({ children }) {
 
-    const [ user, setUser ] = useState(null)
+    const [user, setUser] = useState(null)
 
-    return <Context.Provider value={{ user, setUser}}>
-        { children }
+    return <Context.Provider value={{ user, setUser }}>
+        {children}
     </Context.Provider>
 }
 

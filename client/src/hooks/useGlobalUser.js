@@ -2,14 +2,14 @@ import { useCallback, useContext } from "react"
 import Context from "../context/UserContext"
 import uploadUser from "../services/uploadUser"
 
-export default function useGlobalUser () {
+export default function useGlobalUser() {
     const { user, setUser } = useContext(Context)
 
-    const login =  useCallback((newUser) => {
+    const login = useCallback((newUser) => {
         setUser(newUser)
     }, [setUser])
 
-    const logout =  useCallback(() => {
+    const logout = useCallback(() => {
         setUser(null)
     }, [setUser])
 
@@ -35,7 +35,7 @@ export default function useGlobalUser () {
         } else if (movie !== undefined) {
 
             let newMoviesWatching = user.movies_watching.slice()
-            
+
             newMoviesWatching.map(element => {
                 if (element.id === movie.id) {
                     element.time = data.time
@@ -51,28 +51,28 @@ export default function useGlobalUser () {
             })
         }
 
-    }, [ setUser, user ])
+    }, [setUser, user])
 
-    const getTimeMovieWatching = useCallback ((id) => {
+    const getTimeMovieWatching = useCallback((id) => {
 
         let timeCurrent = 0
         let timeDuration = 0
         let errorFunction = null
-        
+
         try {
 
             let movie = user.movies_watching.find(element => element.id === id)
-            
+
             if (movie !== undefined) {
-                
+
                 timeDuration = movie.duration
-    
-                if (movie.time > 180 && movie.time < movie.duration){
+
+                if (movie.time > 180 && movie.time < movie.duration) {
                     timeCurrent = (movie.time - 30)
                 } else if (movie.time < 300 && movie.time < movie.duration) {
                     timeCurrent = movie.time
                 }
-                
+
             }
 
         } catch (error) {
@@ -80,8 +80,8 @@ export default function useGlobalUser () {
         }
 
         return { timeCurrent, timeDuration, errorFunction }
-        
-    }, [ user ])
+
+    }, [user])
 
     return {
         isLogged: Boolean(user),

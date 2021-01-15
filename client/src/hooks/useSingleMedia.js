@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import getSingleMedia from "../services/getSingleMedia"
 
-export default function useSingleMedia ({ typeMedia, id }) {
+export default function useSingleMedia({ typeMedia, id }) {
 
   const [media, setMedia] = useState([])
 

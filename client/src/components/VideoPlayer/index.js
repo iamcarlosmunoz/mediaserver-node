@@ -8,9 +8,9 @@ import useGlobalUser from "../../hooks/useGlobalUser"
 
 const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
 
-    const [ stateVideoPlayer, setStateVideoPlayer ] = useState("pause")
-    const { updateMovieStatus, getTimeMovieWatching} = useGlobalUser()
-    const [ timeVideo, setTimeVideo] = useState({ timeCurrent: 0, time: 0})
+    const [stateVideoPlayer, setStateVideoPlayer] = useState("pause")
+    const { updateMovieStatus, getTimeMovieWatching } = useGlobalUser()
+    const [timeVideo, setTimeVideo] = useState({ timeCurrent: 0, time: 0 })
     const video = useRef(null)
     const containerInfo = useRef(null)
     const containerVideo = useRef(null)
@@ -20,19 +20,19 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
     const toggleFullScreen = (element) => {
 
         if (!document.fullscreenElement) {
-            if(element.requestFullscreen) {
+            if (element.requestFullscreen) {
                 element.requestFullscreen();
-            } else if(element.mozRequestFullScreen) {
+            } else if (element.mozRequestFullScreen) {
                 element.mozRequestFullScreen();
-            } else if(element.webkitRequestFullscreen) {
+            } else if (element.webkitRequestFullscreen) {
                 element.webkitRequestFullscreen();
-            } else if(element.msRequestFullscreen) {
+            } else if (element.msRequestFullscreen) {
                 element.msRequestFullscreen();
             }
         } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          }
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
         }
     }
 
@@ -41,7 +41,7 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
         if (stateVideoPlayer === "pause") {
             setStateVideoPlayer("play")
             video.current.play()
-        } else if (stateVideoPlayer === "play"){
+        } else if (stateVideoPlayer === "play") {
             setStateVideoPlayer("pause")
             video.current.pause()
         }
@@ -62,8 +62,8 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
 
         let progress = video.current.currentTime / video.current.duration;
         progressBarVideoPlayer.current.style.width = progress * 100 + "%";
-    
-        setTimeVideo({ 
+
+        setTimeVideo({
             timeCurrent: video.current.currentTime,
             time: video.current.duration
         })
@@ -100,28 +100,28 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
         setStateVideoPlayer("play")
         video.current.play()
 
-    }, [ getTimeMovieWatching, mediaData.id, typeMedia ])
+    }, [getTimeMovieWatching, mediaData.id, typeMedia])
 
     useEventListener(video, "timeupdate", handleBarProgress)
     useEventListener(video, "click", handlePlayPauseVideo)
     useEventListener(containerInfo, "click", handlePlayPauseVideo)
-    useEventListener(containerProgressBarVideoPlayer, "click", function(e) {
-        let pos = (e.pageX  - this.offsetLeft) / this.offsetWidth;
+    useEventListener(containerProgressBarVideoPlayer, "click", function (e) {
+        let pos = (e.pageX - this.offsetLeft) / this.offsetWidth;
         video.current.currentTime = pos * video.current.duration;
     })
 
     return (
         <div className="video-player" ref={containerVideo}>
             <video ref={video} className="video-player__source" preload="auto" src={`/api/${typeMedia}/file/${mediaData.id}`}></video>
-            <div ref={containerInfo} className={`video-player__container-title ${ stateVideoPlayer === "pause" && " video-player__container-title--hover"}`}>
-                <img className="video-player__img"src={`https://image.tmdb.org/t/p/w500${ mediaData.poster_path }`} alt="video-img"/>
+            <div ref={containerInfo} className={`video-player__container-title ${stateVideoPlayer === "pause" && " video-player__container-title--hover"}`}>
+                <img className="video-player__img" src={`https://image.tmdb.org/t/p/w500${mediaData.poster_path}`} alt="video-img" />
                 <div className="video-player__container-info">
-                    <h2 className="video-player__title">{ mediaData.title }</h2>
-                    <Overview 
-                        overview={mediaData.overview} 
-                        release_date={mediaData.release_date} 
-                        typeMedia={typeMedia} 
-                        genre_ids={mediaData.genre_ids} 
+                    <h2 className="video-player__title">{mediaData.title}</h2>
+                    <Overview
+                        overview={mediaData.overview}
+                        release_date={mediaData.release_date}
+                        typeMedia={typeMedia}
+                        genre_ids={mediaData.genre_ids}
                         full={true}
                     />
                 </div>
@@ -132,11 +132,11 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
                     <div className="video-player__bar-progress" ref={progressBarVideoPlayer}></div>
                 </div>
                 <div className="video-player__buttons">
-                    { timeVideo.time !== 0 && <span className="video-player__time">{ `${secondsToString(Math.floor(timeVideo.timeCurrent))} / ${secondsToString(Math.floor(timeVideo.time))}`}</span> }
-                    { timeVideo.time === 0 && <span className="video-player__time">00:00:00 / 00:00:00</span> }
+                    {timeVideo.time !== 0 && <span className="video-player__time">{`${secondsToString(Math.floor(timeVideo.timeCurrent))} / ${secondsToString(Math.floor(timeVideo.time))}`}</span>}
+                    {timeVideo.time === 0 && <span className="video-player__time">00:00:00 / 00:00:00</span>}
                     <button className="video-player__btn-play" type="button" onClick={handlePlayPauseVideo}>
-                        { (stateVideoPlayer === "pause") && <ButtonPlayVideo /> }
-                        { (stateVideoPlayer === "play") && <ButtonPauseVideo /> }
+                        {(stateVideoPlayer === "pause") && <ButtonPlayVideo />}
+                        {(stateVideoPlayer === "play") && <ButtonPauseVideo />}
                     </button>
                     <button className="video-player__btn-exit" type="button" onClick={handleExitVideoPlayer}>Salir</button>
                 </div>

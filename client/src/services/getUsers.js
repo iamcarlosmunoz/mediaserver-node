@@ -4,5 +4,5 @@ export default async function getUsers() {
         .then(
             (result) => {
                 return result
-        })
+            })
 }

@@ -1,5 +1,5 @@
 export default async function uploadUser(user) {
-    return await fetch("/api/users/upload/", 
+    return await fetch("/api/users/upload/",
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
