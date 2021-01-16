@@ -8,16 +8,16 @@ export default function useGlobalUser() {
     const { user, setUser } = useContext(Context)
     const [state, setState] = useState({ isLoaded: false, error: false })
 
-    const login = useCallback(({ id, password }) => {
+    const login = useCallback(({ id, password, img_profile, username }) => {
         signinService({ id, password })
             .then(
-                (result) => {
-                    setState({isLoaded: true, error: false })
-                    setUser(result)
+                (token) => {
+                    setState({ isLoaded: true, error: false })
+                    setUser({ token, img_profile, username })
                 }
             )
             .catch(err => {
-                setState({isLoaded: true, error: true })
+                setState({ isLoaded: true, error: true })
             })
     }, [setUser])
 

@@ -32,8 +32,8 @@ const MainHeader = () => {
                     <input className="main-header__input focus--box-shadow" id="main-header__input" type="text" placeholder="Buscar" />
                 </form>
                 <button className="account-btn focus--box-shadow" type="button" onClick={handleClick}>
-                    <span className="account-btn__name">{user.name}</span>
-                    <img className="account-btn__img" src={user.img} alt={user.name} loading="lazy" />
+                    <span className="account-btn__name">{user.username}</span>
+                    <img className="account-btn__img" src={user.img_profile} alt={user.username} loading="lazy" />
                 </button>
             </header>
             }

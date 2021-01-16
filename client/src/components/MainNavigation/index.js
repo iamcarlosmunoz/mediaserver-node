@@ -6,7 +6,6 @@ const MainNavigation = () => {
 
     const [location] = useLocation()
 
-
     return (
         <nav className="main-nav">
             <ul className="main-nav__list">

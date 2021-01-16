@@ -7,7 +7,7 @@ export const getMovies = async (req, res) => {
 
         const movies = await JSON.parse(fs.readFileSync(config.urlMoviesData, "utf-8"))
 
-        res.json(movies)
+        res.json({media: movies})
 
     } catch (error) {
         console.error("GET_MOVIES_ERROR: ", error)

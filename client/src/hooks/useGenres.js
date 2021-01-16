@@ -3,21 +3,22 @@ import getGenres from "../services/getGenres"
 
 export default function useGenres({ tags = [] }) {
 
-  const [genres, setGenres] = useState([])
+    const [genres, setGenres] = useState([])
 
-  useEffect(function () {
+    useEffect(function () {
 
-    let mounted = true
+        let mounted = true
 
-    getGenres()
-      .then(data => {
-        if (mounted) setGenres(data.filter(element => tags.find(tag => tag === element.id)))
-      }).catch(err => {
-        console.error("useGenres: ", err)
-      })
+        getGenres()
+            .then(data => {
+                if (mounted) setGenres(data.filter(element => tags.find(tag => tag === element.id)))
+            }).catch(err => {
+                console.error("useGenres: ", err)
+            })
 
-    return () => mounted = false
-  }, [tags])
+        return () => mounted = false
 
-  return { genres }
+    }, [tags])
+
+    return { genres }
 }

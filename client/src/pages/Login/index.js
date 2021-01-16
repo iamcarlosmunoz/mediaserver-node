@@ -20,7 +20,8 @@ const Login = () => {
     }, [isLogged, isLoginError, isLoginLoaded, pushLocation])
 
     const handleClick = (id) => {
-        login({ id, password: "" });
+        const userSeleted = users.find( user => user.id === id)
+        login({ id, password: "", img_profile: userSeleted.img_profile, username: userSeleted.username });
     }
 
     return (
