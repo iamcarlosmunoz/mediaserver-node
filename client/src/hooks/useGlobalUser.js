@@ -1,12 +1,24 @@
-import { useCallback, useContext } from "react"
+import { useCallback, useContext, useState } from "react"
 import Context from "../context/UserContext"
 import uploadUser from "../services/uploadUser"
+import signinService from "../services/signin"
 
 export default function useGlobalUser() {
-    const { user, setUser } = useContext(Context)
 
-    const login = useCallback((newUser) => {
-        setUser(newUser)
+    const { user, setUser } = useContext(Context)
+    const [state, setState] = useState({ isLoaded: false, error: false })
+
+    const login = useCallback(({ id, password }) => {
+        signinService({ id, password })
+            .then(
+                (result) => {
+                    setState({isLoaded: true, error: false })
+                    setUser(result)
+                }
+            )
+            .catch(err => {
+                setState({isLoaded: true, error: true })
+            })
     }, [setUser])
 
     const logout = useCallback(() => {
@@ -85,6 +97,8 @@ export default function useGlobalUser() {
 
     return {
         isLogged: Boolean(user),
+        isLoginLoaded: state.isLoaded,
+        isLoginError: state.error,
         updateMovieStatus,
         getTimeMovieWatching,
         updateUserState,

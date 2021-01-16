@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useLocation } from "wouter"
 
 import "../../components/AppLayout/normalize.css"
@@ -12,12 +12,15 @@ import SkeletonCardUser from "./SkeletonCardUser"
 const Login = () => {
 
     const { error, isLoaded, users } = useAllUsers()
-    // const { login } = useGlobalUser()
+    const { login, isLoginLoaded, isLoginError, isLogged } = useGlobalUser()
     const [, pushLocation] = useLocation()
 
+    useEffect(() => {
+        if (isLoginLoaded && !isLoginError && isLogged) pushLocation("/")
+    }, [isLogged, isLoginError, isLoginLoaded, pushLocation])
+
     const handleClick = (id) => {
-        // login(users.find(element => element.id === id));
-        pushLocation("/")
+        login({ id, password: "" });
     }
 
     return (
@@ -31,7 +34,7 @@ const Login = () => {
                     </button>)
                 }
                 {
-                    (!users || error || !isLoaded) && <SkeletonCardUser />
+                    (!users || error || !isLoaded) && [1, 2].map((index) => <SkeletonCardUser key={`ms-${index}`} />)
                 }
             </div>
         </div>
