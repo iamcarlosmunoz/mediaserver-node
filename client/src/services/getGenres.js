@@ -4,6 +4,9 @@ export default async function getGenres() {
     .then(
       (result) => {
         return result
+      },
+      (error) => {
+        return error
       }
     )
 }

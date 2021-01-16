@@ -17,7 +17,7 @@ export const getUsers = async (req, res) => {
             return user
         })
 
-        res.json(newArrayUsers)
+        res.json({ users: newArrayUsers })
 
     } catch (error) {
         console.error("GET_USERS_ERROR: ", error)
