@@ -12,13 +12,19 @@ import AppLayout from "../../components/AppLayout"
 import useGlobalUser from "../../hooks/useGlobalUser"
 import useGlobalMedia from "../../hooks/useGlobalMedia"
 
+const setValueBarProgress = ({ bar, time, duration }) => {
+    if (time > 0) {
+        bar.current.style.width = (time / duration) * 100 + "%"
+    }
+}
+
 const Detail = ({ params }) => {
 
     const typeMedia = (/\w[a-z]+/).exec(window.location.pathname)[0]
     const [, pushLocation] = useLocation()
     const [media, setMedia] = useState(null)
     const { getSingleMedia } = useGlobalMedia()
-    const { watchingList } = useGlobalUser()
+    const { getTimeMovie } = useGlobalUser()
     const [activePlayerVideo, setActivePlayerVideo] = useState(false)
     const [replay, setReplay] = useState(false)
     const barProgress = useRef(null)
@@ -37,27 +43,14 @@ const Detail = ({ params }) => {
 
     useEffect(function () {
 
-        let time = 0
-        let duration = 0
-
+        const { time, duration } = getTimeMovie({ id: params.id })
+        if (typeMedia === "movies") setValueBarProgress({ bar: barProgress, time, duration })
         setMedia(getSingleMedia({ id: params.id, typeMedia: typeMedia }))
-
-        if (watchingList) {
-            if (typeMedia === "movies") {
-                const mediaFound = watchingList.watching_movies.find(movie => movie.id === parseInt(params.id, 10))
-                if (mediaFound) {
-                    time = mediaFound.time
-                    duration = mediaFound.duration
-                }
-            }
-        }
-        // const { timeCurrent, timeDuration } = getTimeMovieWatching(media.id)
-        if (time > 0) barProgress.current.style.width = (time / duration) * 100 + "%"
         setReplay(() => time > 0 ? true : false)
 
         // return () => updateUserState()
 
-    }, [getSingleMedia, params.id, typeMedia, watchingList])
+    }, [getTimeMovie, getSingleMedia, params.id, typeMedia])
 
     return (
         <AppLayout>

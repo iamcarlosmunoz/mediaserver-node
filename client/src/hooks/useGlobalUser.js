@@ -24,20 +24,36 @@ export default function useGlobalUser() {
     const getWatchingList = useCallback(() => {
         if (user) {
             getWatchingListService({ token: user.token })
-            .then(
-                (result) => {
-                    setWatchingList(result)
-                }
-            )
-            .catch(err => {
-                setWatchingList(null)
-            })
+                .then(
+                    (result) => {
+                        setWatchingList(result)
+                    }
+                )
+                .catch(err => {
+                    setWatchingList(null)
+                })
         }
     }, [setWatchingList, user])
 
     const logout = useCallback(() => {
         setUser(null)
     }, [setUser])
+
+    const getTimeMovie = useCallback(({ id }) => {
+
+        let time = 0
+        let duration = 0
+
+        if (watchingList) {
+            const movieFound = watchingList.watching_movies.find(movie => movie.id === parseInt(id, 10))
+            if (movieFound) {
+                time = movieFound.time
+                duration = movieFound.duration
+            }
+        }
+
+        return { time, duration }
+    }, [watchingList])
 
     return {
         isLogged: Boolean(user),
@@ -46,6 +62,7 @@ export default function useGlobalUser() {
         login,
         logout,
         getWatchingList,
+        getTimeMovie,
         watchingList,
         user
     }

@@ -44,10 +44,9 @@ export default function useGlobalMedia() {
     }, [setSeries])
 
     const getSingleMedia = useCallback(({ id, typeMedia }) => {
-        if (typeMedia === "movies") {
+        if (typeMedia === "movies" && movies) {
             const movieFound = movies.find(movie => movie.id === parseInt(id, 10))
-            if (!movieFound) return null
-            return movieFound
+            return !movieFound ? null : movieFound
         }
     }, [movies])
 
