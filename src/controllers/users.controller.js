@@ -26,7 +26,7 @@ export const getUsers = async (req, res) => {
 
 }
 
-export const getListWatching = async (req, res) => {
+export const getWatchingList = async (req, res) => {
 
     try {
 
@@ -44,11 +44,11 @@ export const getListWatching = async (req, res) => {
         delete userFound.saved_series
         delete userFound.roles
 
-        res.json(userFound)
+        res.json({ watching_list: userFound })
 
     } catch (error) {
         console.error("GET_LIST_WATCHING_ERROR: ", error)
-        return res.status(500).json({ error: "Array of list watching not obtained" })
+        return res.status(500).json({ error: "Array of watching list not obtained" })
     }
 
 }
@@ -80,7 +80,7 @@ export const addItemToWatchingMovies = async (req, res) => {
 
     } catch (error) {
         console.error("UPDATE_LIST_WATCHING_ERROR: ", error)
-        return res.status(500).json({ error: "Array of list watching not updated" })
+        return res.status(500).json({ error: "Array of watching list not updated" })
     }
 
 }

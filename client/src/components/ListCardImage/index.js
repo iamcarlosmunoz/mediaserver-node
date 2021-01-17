@@ -4,11 +4,8 @@ import "./ListCardImage.css"
 import Carousel from "react-elastic-carousel"
 import CardImage from "../CardImage"
 import SkeletonCardImage from "../SkeletonCardImage"
-import useAllMedia from "../../hooks/useAllMedia"
 
-const ListCardImage = ({ typeMedia }) => {
-
-    const { error, isLoaded, media } = useAllMedia({ typeMedia })
+const ListCardImage = ({ media, typeMedia, isLoading, isError }) => {
 
     return (
         <Carousel
@@ -22,7 +19,7 @@ const ListCardImage = ({ typeMedia }) => {
             ]}
         >
             { media && media.slice(0).reverse().map(element => <CardImage key={element.id} typeMedia={typeMedia} data={element} />)}
-            { (!media && !isLoaded && error) && [1, 2, 3, 4, 5, 6, 7, 8].map(element => <SkeletonCardImage key={element} />)}
+            { (!media && isLoading && !isError) && [1, 2, 3, 4, 5, 6, 7, 8].map(element => <SkeletonCardImage key={element} />)}
         </Carousel>
 
     )
