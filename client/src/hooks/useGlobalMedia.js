@@ -2,7 +2,7 @@ import { useCallback, useContext, useState } from "react"
 import Context from "../context/MediaContext"
 
 import getAllMediaService from "../services/getAllMedia"
-import getAllGenresService from "../services/getAllGenres" 
+import getAllGenresService from "../services/getAllGenres"
 
 export default function useGlobalMedia() {
 
@@ -68,12 +68,26 @@ export default function useGlobalMedia() {
         }
     }, [movies])
 
+    const getGenresById = useCallback(({ tags }) => {
+        
+        const arrayGenres = []
+
+        tags.map(tag => {
+            let tagFound = genres.find(genre => genre.id === tag)
+            if (tagFound) arrayGenres.push(tagFound)
+            return tag
+        })
+
+        return arrayGenres
+
+    }, [genres])
+
     return {
         getGenres,
         getMovies,
         getSeries,
         getSingleMedia,
-        genres,
+        getGenresById,
         movies,
         series,
         isGenresLoading: stateGenres.isLoading,

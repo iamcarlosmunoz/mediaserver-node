@@ -1,12 +1,13 @@
 import React from "react"
+import useGlobalMedia from "../../hooks/useGlobalMedia"
 import "./ListTags.css"
 
 import Tag from "./Tag"
-import useGenres from "../../hooks/useGenres"
 
 const ListTags = ({ typeMedia, releaseDate, tags }) => {
 
-    const { genres } = useGenres({ tags })
+    const { getGenresById } = useGlobalMedia()
+    const genres = getGenresById({ tags })
 
     return (
         <div className="ms__container-tags">

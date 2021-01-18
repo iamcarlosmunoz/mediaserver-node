@@ -10,7 +10,7 @@ export const verifyToken = async (req, res, next) => {
 
     try {
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUserData, "utf-8"))
+        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
 
         const decoded = jwt.verify(token, config.SecretKey);
         req.userId = decoded.id;

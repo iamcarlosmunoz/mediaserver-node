@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
             roles: (!role) ? "user" : role
         })
 
-        fs.writeFileSync(config.urlUserData, JSON.stringify(users))
+        fs.writeFileSync(config.urlUsersData, JSON.stringify(users))
 
         // Create a token
         const token = jwt.sign({ id: userId }, config.SecretKey, {
@@ -47,7 +47,7 @@ export const signin = async (req, res) => {
 
     try {
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUserData, "utf-8"))
+        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
 
         const userFound = await users.slice().find(user => {
             if (user.id === id) {

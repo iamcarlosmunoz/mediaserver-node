@@ -5,7 +5,7 @@ const checkDuplicateUsername = async (req, res, next) => {
 
     try {
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUserData, "utf-8"))
+        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
 
         const userFound = await users.find(element => element.username == req.body.username);
 

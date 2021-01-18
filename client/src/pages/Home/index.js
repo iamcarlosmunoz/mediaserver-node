@@ -8,15 +8,16 @@ import useGlobalUser from "../../hooks/useGlobalUser"
 
 const Home = () => {
 
-    const { getMovies, movies, isMoviesLoading, isMoviesError } = useGlobalMedia()
+    const { getGenres, getMovies, movies, isMoviesLoading, isMoviesError } = useGlobalMedia()
     const { getWatchingList } = useGlobalUser()
 
     useEffect(() => {
 
+        getGenres()
         getMovies()
         getWatchingList()
 
-    }, [getMovies, getWatchingList])
+    }, [getGenres, getMovies, getWatchingList])
 
     return (
         <AppLayout>
