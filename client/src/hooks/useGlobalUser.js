@@ -22,17 +22,19 @@ export default function useGlobalUser() {
     }, [setUser])
 
     const getWatchingList = useCallback(() => {
-        if (user) {
-            getWatchingListService({ token: user.token })
-                .then(
-                    (result) => {
-                        setWatchingList(result)
-                    }
-                )
-                .catch(err => {
-                    setWatchingList(null)
-                })
-        }
+        
+        if (!user) return
+
+        getWatchingListService({ token: user.token })
+            .then(
+                (result) => {
+                    setWatchingList(result)
+                }
+            )
+            .catch(() => {
+                setWatchingList(null)
+            })
+
     }, [setWatchingList, user])
 
     const logout = useCallback(() => {
@@ -53,6 +55,7 @@ export default function useGlobalUser() {
         }
 
         return { time, duration }
+
     }, [watchingList])
 
     return {

@@ -11,13 +11,11 @@ const Home = () => {
     const { getMovies, movies, isMoviesLoading, isMoviesError } = useGlobalMedia()
     const { getWatchingList } = useGlobalUser()
 
-    useEffect(function () {
-        let mounted = true
-        if (mounted) {
-            getMovies()
-            getWatchingList()
-        }
-        return () => mounted = false
+    useEffect(() => {
+
+        getMovies()
+        getWatchingList()
+
     }, [getMovies, getWatchingList])
 
     return (

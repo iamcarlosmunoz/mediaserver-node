@@ -5,7 +5,7 @@ export const getUsers = async (req, res) => {
 
     try {
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUserData, "utf-8"))
+        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
 
         const newArrayUsers = await users.slice().map(user => {
             delete user.password
@@ -30,7 +30,7 @@ export const getWatchingList = async (req, res) => {
 
     try {
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUserData, "utf-8"))
+        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
 
         const userFound = await users.find(user => user.id === req.userId)
 
@@ -59,7 +59,7 @@ export const addItemToWatchingMovies = async (req, res) => {
 
     try {
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUserData, "utf-8"))
+        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
 
         const userFound = await users.find(user => user.id === req.userId)
 
@@ -74,9 +74,9 @@ export const addItemToWatchingMovies = async (req, res) => {
             return user
         })
 
-        fs.writeFileSync(config.urlUserData, JSON.stringify(users))
+        fs.writeFileSync(config.urlUsersData, JSON.stringify(users))
 
-        res.status(200).json({message: "Added item to watching movies"})
+        res.status(200).json({ message: "Added item to watching movies" })
 
     } catch (error) {
         console.error("UPDATE_LIST_WATCHING_ERROR: ", error)
@@ -91,7 +91,7 @@ export const updateWatchingMovies = async (req, res) => {
 
     try {
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUserData, "utf-8"))
+        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
 
         const userFound = await users.find(user => user.id === req.userId)
 
@@ -111,9 +111,9 @@ export const updateWatchingMovies = async (req, res) => {
             return user
         })
 
-        fs.writeFileSync(config.urlUserData, JSON.stringify(users))
+        fs.writeFileSync(config.urlUsersData, JSON.stringify(users))
 
-        res.status(200).json({message: "Update list watching movies"})
+        res.status(200).json({ message: "Update list watching movies" })
 
     } catch (error) {
         console.error("UPDATE_LIST_WATCHING_ERROR: ", error)

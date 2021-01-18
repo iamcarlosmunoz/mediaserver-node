@@ -55,7 +55,7 @@ export const signin = async (req, res) => {
             }
         })
 
-        if (!userFound) return res.status(400).json({ token: null , message: "User not found" })
+        if (!userFound) return res.status(400).json({ token: null, message: "User not found" })
 
         if (!(password === userFound.password)) return res.status(401).json({ token: null, message: "Invalid Password" });
 

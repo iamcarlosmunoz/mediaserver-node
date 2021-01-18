@@ -1,7 +1,7 @@
 import React from "react"
 import { Route, Switch } from "wouter";
 
-import HomePage from "./pages/HomePage"
+import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Detail from "./pages/Detail"
 
@@ -12,13 +12,13 @@ const App = () => {
 
     return (
         <UserProvider>
-            <Switch>
-                <Route component={Login} path="/login" />
-                <MediaProvider>
-                    <Route component={HomePage} path="/" />
+            <MediaProvider>
+                <Switch>
+                    <Route component={Login} path="/login" />
+                    <Route component={Home} path="/" />
                     <Route component={Detail} path="/movies/:id" />
-                </MediaProvider>
-            </Switch>
+                </Switch>
+            </MediaProvider>
         </UserProvider>
     )
 }

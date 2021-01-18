@@ -7,7 +7,7 @@ export const getMovies = async (req, res) => {
 
         const movies = await JSON.parse(fs.readFileSync(config.urlMoviesData, "utf-8"))
 
-        res.json({media: movies})
+        res.json({ media: movies })
 
     } catch (error) {
         console.error("GET_MOVIES_ERROR: ", error)
@@ -22,7 +22,7 @@ export const getMovieById = async (req, res) => {
 
         const movies = await JSON.parse(fs.readFileSync(config.urlMoviesData, "utf-8"))
 
-        const movieFound = await movies.find( movie => movie.id === parseInt(req.params.id, 10))
+        const movieFound = await movies.find(movie => movie.id === parseInt(req.params.id, 10))
 
         if (!movieFound) return res.status(400).json({ message: "Movie not found" })
 
@@ -41,7 +41,7 @@ export const getFileMovieById = async (req, res) => {
 
         const movies = await JSON.parse(fs.readFileSync(config.urlMoviesData, "utf-8"))
 
-        const movieFound = await movies.find( movie => movie.id === parseInt(req.params.id, 10))
+        const movieFound = await movies.find(movie => movie.id === parseInt(req.params.id, 10))
 
         if (!movieFound) return res.status(400).json({ message: "Movie not found" })
 

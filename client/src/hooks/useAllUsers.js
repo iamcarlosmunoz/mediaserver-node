@@ -15,7 +15,7 @@ export default function useAllUsers() {
                     setUsers(result)
                 }
             )
-            .catch(err => {
+            .catch(() => {
                 setIsLoaded(true)
                 setError(true)
             })
