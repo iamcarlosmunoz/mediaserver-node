@@ -1,11 +1,11 @@
-import { Router } from "express"
-import * as authController from "../controllers/auth.controller"
-import { checkDuplicateUsername } from "../middlewares/verifySignup"
+import { Router } from "express";
+import * as authController from "../controllers/auth.controller";
+import { checkDuplicateUsername } from "../middlewares/verifySignup";
 
-const router = Router()
+const router = Router();
 
-router.post("/signup", checkDuplicateUsername, authController.signup)
+router.post("/signup", checkDuplicateUsername, authController.signup);
 
-router.post("/signin", authController.signin)
+router.post("/signin", authController.signin);
 
-export default router
+export default router;

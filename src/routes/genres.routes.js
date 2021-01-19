@@ -1,9 +1,9 @@
-import { Router } from "express"
+import { Router } from "express";
 // import { verifyToken } from "../middlewares/authJwt";
-import * as GenresController from "../controllers/genres.controller"
+import * as GenresController from "../controllers/genres.controller";
 
-const router = Router()
+const router = Router();
 
-router.get("/", GenresController.getGenres)
+router.get("/", GenresController.getGenres);
 
-export default router
+export default router;

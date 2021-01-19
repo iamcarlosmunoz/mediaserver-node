@@ -1,26 +1,26 @@
 .ms__button-only-icon {
-    width: 3.3em;
-    height: 3.3em;
-    padding: 0.4em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-    background: none;
-    margin-left: 0.5em;
-    cursor: pointer;
+  width: 3.3em;
+  height: 3.3em;
+  padding: 0.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background: none;
+  margin-left: 0.5em;
+  cursor: pointer;
 }
 
 .ms__only-icon-button {
-    width: 100%;
+  width: 100%;
 }
 
-.ms__only-icon-button path{
-    fill: #fff;
-    opacity: 0.6;
-    transition: opacity 0.3s ease 0s;
+.ms__only-icon-button path {
+  fill: #fff;
+  opacity: 0.6;
+  transition: opacity 0.3s ease 0s;
 }
 
-.ms__only-icon-button:hover path{
-    opacity: 1;
+.ms__only-icon-button:hover path {
+  opacity: 1;
 }

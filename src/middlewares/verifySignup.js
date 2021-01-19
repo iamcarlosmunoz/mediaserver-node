@@ -1,25 +1,26 @@
-import fs from "fs"
-import config from "../config"
+import fs from "fs";
+import config from "../config";
 
 const checkDuplicateUsername = async (req, res, next) => {
+  try {
+    const users = await JSON.parse(
+      fs.readFileSync(config.urlUsersData, "utf-8")
+    );
 
-    try {
+    const userFound = await users.find(
+      (element) => element.username == req.body.username
+    );
 
-        const users = await JSON.parse(fs.readFileSync(config.urlUsersData, "utf-8"))
+    if (userFound)
+      return res.status(400).json({ message: "The user already exists" });
 
-        const userFound = await users.find(element => element.username == req.body.username);
+    req.body.users = users;
 
-        if (userFound) return res.status(400).json({ message: "The user already exists" });
-
-        req.body.users = users
-
-        next();
-
-    } catch (error) {
-        console.error("CHECK_DUPLICATE_USERNAME_ERROR: ", error)
-        res.status(500).json({ error: "The username could not be validated" });
-    }
-
+    next();
+  } catch (error) {
+    console.error("CHECK_DUPLICATE_USERNAME_ERROR: ", error);
+    res.status(500).json({ error: "The username could not be validated" });
+  }
 };
 
 export { checkDuplicateUsername };

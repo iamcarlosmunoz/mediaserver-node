@@ -1,149 +1,150 @@
 /* ------------ Video Player ----------- */
 .video-player {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .video-player__source {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .video-player__controls {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    flex-wrap: wrap;
-    background: rgba(0, 0, 0, 0.7);
-    transform: translateY(100%);
-    transition: all 0.3s ease;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(100%);
+  transition: all 0.3s ease;
 }
 .video-player__buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7em;
 }
 
 .video-player__controls.video-player__hover:hover,
-.video-player__hover-controls.video-player__hover:hover ~ .video-player__controls {
-    transform: translateY(0);
+.video-player__hover-controls.video-player__hover:hover
+  ~ .video-player__controls {
+  transform: translateY(0);
 }
 
 .video-player__controls.video.pause-hover,
 .video-player__hover-controls.pause-hover ~ .video-player__controls {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 .video-player__hover-controls {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    min-height: 6.25em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 6.25em;
 }
 
 .video-player__icon {
-    width: 2.5em;
-    height: 2.5em;
+  width: 2.5em;
+  height: 2.5em;
 }
 
 .video-player__icon path {
-    fill: #fff;
+  fill: #fff;
 }
 
 .video-player__btn-play {
-    background: none;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    padding-right: 3.5em;
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  padding-right: 3.5em;
 }
 
 .video-player__btn-exit {
-    background: #3b3b3b;
-    border: 0;
-    border-radius: 0.625em;
-    outline: 0;
-    cursor: pointer;
-    padding: 0.625em 1.25em;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1em;
-    transition: all 0.3s ease;
+  background: #3b3b3b;
+  border: 0;
+  border-radius: 0.625em;
+  outline: 0;
+  cursor: pointer;
+  padding: 0.625em 1.25em;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1em;
+  transition: all 0.3s ease;
 }
 
 .video-player__btn-exit:hover {
-    background: #fff;
-    color: #222;
+  background: #fff;
+  color: #222;
 }
 
 .video-player__bar-container {
-    height: 1.5625em;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #8f8f8f;
-    cursor: pointer;
+  height: 1.5625em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #8f8f8f;
+  cursor: pointer;
 }
 
 .video-player__bar-progress {
-    height: 1.5625em;
-    background-color: #ffd717;
+  height: 1.5625em;
+  background-color: #ffd717;
 }
 
 .video-player__time {
-    color: #fff;
+  color: #fff;
 }
 
 .video-player__container-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 5em);
-    background: linear-gradient(to left, transparent,#000);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(-50%);
-    transition: all 0.3s ease;
-    opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 5em);
+  background: linear-gradient(to left, transparent, #000);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  opacity: 0;
 }
 
 .video-player__container-title--hover {
-    transform: translateX(0);
-    opacity: 1;
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .video-player__title {
-    margin-bottom: 0.5em;
-    color: #fff;
+  margin-bottom: 0.5em;
+  color: #fff;
 }
 
 .video-player__img {
-    width: 13.5em;
-    height: 20.75em;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+  width: 13.5em;
+  height: 20.75em;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }
 
 .video-player__container-info {
-    width: 50%;
-    margin-left: 2.5em;
+  width: 50%;
+  margin-left: 2.5em;
 }
 
 @media (min-width: 1366px) {
-    .video-player {
-        font-size: 22px;
-    }
+  .video-player {
+    font-size: 22px;
+  }
 }
 
 @media (min-width: 1500px) {
-    .video-player {
-        font-size: 24px;
-    }
+  .video-player {
+    font-size: 24px;
+  }
 }
