@@ -31,7 +31,9 @@ const UserCardList = () => {
     <>
       <h1 className="user-card-list__title">¿Quién está mirando?</h1>
       <div className="user-card-list">
-        {(users) && users.map(user => <UserCard user={user} onClick={handleClick} key={user.username + "ms"} />)}
+        {users && users.map(user => <UserCard user={user} onClick={handleClick} key={user.username + "ms"} />)}
+        {isLoading && <h2>Cargando usuario...</h2>}
+        {error && <h2>Algo salio mal</h2>}
       </div>
     </>
   )
