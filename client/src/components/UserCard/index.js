@@ -1,5 +1,6 @@
 import React from "react"
-import "./styles.css"
+
+import { Card, ContainerCard, ImgCard, NameTitleCard } from "./styles"
 
 const UserCard = ({ user, onClick }) => {
 
@@ -8,20 +9,18 @@ const UserCard = ({ user, onClick }) => {
   }
 
   return (
-    <button
-      className="user-card"
+    <Card
       onClick={() => handleClickUserCard({ id: user.id })}
       key={user.id + "user-card"}
     >
-      <div className="user-card__container">
-        <img
-          className="user-card__img"
+      <ContainerCard>
+        <ImgCard
           src={user.img_profile}
           alt={user.username}
         />
-      </div>
-      <h3 className="user-card__name">{user.username}</h3>
-    </button>
+      </ContainerCard>
+      <NameTitleCard>{user.username}</NameTitleCard>
+    </Card>
   )
 }
 
