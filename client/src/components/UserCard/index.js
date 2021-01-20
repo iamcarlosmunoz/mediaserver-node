@@ -10,7 +10,7 @@ const UserCard = ({ user, onClick }) => {
   return (
     <button
       className="user-card"
-      onClick={() => handleClickUserCard(user.id)}
+      onClick={() => handleClickUserCard({ id: user.id })}
       key={user.id + "user-card"}
     >
       <div className="user-card__container">

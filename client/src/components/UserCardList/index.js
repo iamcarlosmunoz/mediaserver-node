@@ -10,21 +10,25 @@ import "./styles.css"
 const UserCardList = () => {
 
   const { error, isLoading, users } = useAllUsers();
-  const { login, isLoginLoaded, isLoginError, isLogged } = useGlobalUser();
+  const { login, isLoginLoading, isLoginError, isLogged } = useGlobalUser();
   const [, pushLocation] = useLocation();
 
   useEffect(() => {
-    if (isLoginLoaded && !isLoginError && isLogged) pushLocation("/");
-  }, [isLogged, isLoginError, isLoginLoaded, pushLocation]);
+    if (isLogged && !isLoginError) pushLocation("/");
+  }, [isLogged, isLoginError, pushLocation]);
 
   const handleClick = ({ id }) => {
-    const userSeleted = users.find((user) => user.id === id);
-    login({
-      id,
-      password: "",
-      img_profile: userSeleted.img_profile,
-      username: userSeleted.username,
-    });
+    if (!isLoginLoading && !isLoginError) {
+
+      const userSeleted = users.find((user) => user.id === id);
+
+      login({
+        id,
+        password: "",
+        img_profile: userSeleted.img_profile,
+        username: userSeleted.username,
+      });
+    }
   };
 
   return (
