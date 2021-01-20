@@ -7,8 +7,8 @@ import SimpleAppLayout from "../../containers/SimpleAppLayout";
 const Login = () => {
   return (
     <SimpleAppLayout>
-      <SvgWave />
-      <SvgWave bottom={true} />
+      <SvgWave color={"#f96d00"} />
+      <SvgWave color={"#f96d00"} bottom={true} />
       <UserCardList />
     </SimpleAppLayout>
   );

@@ -27,7 +27,7 @@
 @media (max-width: 768px) {
   .svg-form__wave svg {
     width: calc(150% + 1.3px);
-    height: 120px;
+    height: 110px;
   }
 }
 

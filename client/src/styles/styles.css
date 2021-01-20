@@ -13,9 +13,18 @@ body {
   font-family: "Roboto Regular", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e9e8ec;
+  background-color: #222831;
   font-size: 16px;
-  color: #222;
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fff;
 }
 
 @media (max-width: 768px) {
