@@ -8,7 +8,7 @@ import VideoPlayer from "../../components/VideoPlayer";
 import ButtonCheck from "../../components/ButtonCheck";
 import ButtonNormal from "../../components/ButtonNormal";
 import Overview from "../../components/Overview";
-import AppLayout from "../../components/AppLayout";
+import AppLayout from "../../containers/AppLayout";
 import useGlobalUser from "../../hooks/useGlobalUser";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 

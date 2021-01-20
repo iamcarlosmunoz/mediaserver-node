@@ -5,17 +5,18 @@ import getWatchingListService from "../services/getWatchingList";
 
 export default function useGlobalUser() {
   const { user, setUser, watchingList, setWatchingList } = useContext(Context);
-  const [state, setState] = useState({ isLoaded: false, error: false });
+  const [state, setState] = useState({ isLoading: false, error: false });
 
   const login = useCallback(
     ({ id, password, img_profile, username }) => {
+      setState({ isLoading: true, error: false });
       signinService({ id, password })
         .then((token) => {
-          setState({ isLoaded: true, error: false });
+          setState({ isLoading: false, error: false });
           setUser({ token, img_profile, username });
         })
         .catch((err) => {
-          setState({ isLoaded: true, error: true });
+          setState({ isLoading: false, error: true });
         });
     },
     [setUser]
@@ -59,7 +60,7 @@ export default function useGlobalUser() {
 
   return {
     isLogged: Boolean(user),
-    isLoginLoaded: state.isLoaded,
+    isLoginLoading: state.isLoading,
     isLoginError: state.error,
     login,
     logout,

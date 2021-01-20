@@ -1,0 +1,34 @@
+/* Start wave styles */
+.svg-form__wave {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.svg-form__wave--top {
+  top: 0;
+  left: 0;
+}
+
+.svg-form__wave--bottom {
+  bottom: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.svg-form__wave svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
+
+@media (max-width: 768px) {
+  .svg-form__wave svg {
+    width: calc(150% + 1.3px);
+    height: 120px;
+  }
+}
+
+/* End wave styles */

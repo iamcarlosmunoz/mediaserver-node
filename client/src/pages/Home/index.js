@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import MainSection from "../../components/MainSection";
 import ListCardImage from "../../components/ListCardImage";
-import AppLayout from "../../components/AppLayout";
+import AppLayout from "../../containers/AppLayout";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 import useGlobalUser from "../../hooks/useGlobalUser";
 

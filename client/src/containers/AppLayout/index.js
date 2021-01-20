@@ -1,7 +1,7 @@
 import React from "react";
 
-import MainNavigation from "../MainNavigation";
-import MainHeader from "../MainHeader";
+import MainNavigation from "../../components/MainNavigation";
+import MainHeader from "../../components/MainHeader";
 
 import "./styles.css";
 
