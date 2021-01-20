@@ -5,40 +5,27 @@ import UserCard from "../UserCard"
 import useAllUsers from "../../hooks/useAllUsers";
 import useGlobalUser from "../../hooks/useGlobalUser";
 
-import "./styles.css"
+import { List, TitleList } from "./styles"
 
 const UserCardList = () => {
 
   const { error, isLoading, users } = useAllUsers();
-  const { login, isLoginLoading, isLoginError, isLogged } = useGlobalUser();
+  const { isLoginLoading, isLoginError, isLogged } = useGlobalUser();
   const [, pushLocation] = useLocation();
 
   useEffect(() => {
-    if (isLogged && !isLoginError) pushLocation("/");
-  }, [isLogged, isLoginError, pushLocation]);
+    if (isLogged && !isLoginError && !isLoginLoading) pushLocation("/");
+  }, [isLogged, isLoginError, isLoginLoading, pushLocation]);
 
-  const handleClick = ({ id }) => {
-    if (!isLoginLoading && !isLoginError) {
-
-      const userSeleted = users.find((user) => user.id === id);
-
-      login({
-        id,
-        password: "",
-        img_profile: userSeleted.img_profile,
-        username: userSeleted.username,
-      });
-    }
-  };
 
   return (
     <>
-      <h1 className="user-card-list__title">¿Quién está mirando?</h1>
-      <div className="user-card-list">
-        {users && users.map(user => <UserCard user={user} onClick={handleClick} key={user.username + "ms"} />)}
+      <TitleList className="user-card-list__title">¿Quién está mirando?</TitleList>
+      <List className="user-card-list">
+        {users && users.map(user => <UserCard user={user} key={user.username + "ms"} />)}
         {isLoading && <h2>Cargando usuario...</h2>}
-        {error && <h2>Algo salio mal</h2>}
-      </div>
+        {(error || isLoginError) && <h2>Algo salio mal</h2>}
+      </List>
     </>
   )
 }
