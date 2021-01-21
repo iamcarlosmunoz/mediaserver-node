@@ -1,6 +1,6 @@
-import { config } from "dotenv"
+import { config } from "dotenv";
 
-config()
+config();
 
 export default {
   serverPort: process.env.PORT,
@@ -8,4 +8,4 @@ export default {
   urlGenresData: process.env.URL_GENRES_DATA,
   urlUsersData: process.env.URL_USERS_DATA,
   urlMoviesData: process.env.URL_MOVIES_DATA,
-}
+};

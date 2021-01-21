@@ -1,4 +1,4 @@
-import "./styles.css"
+import "./styles.css";
 
 export const SvgWave = ({ bottom = false, color = "#ff6d24" }) => {
   return (
@@ -29,5 +29,5 @@ export const SvgWave = ({ bottom = false, color = "#ff6d24" }) => {
         ></path>
       </svg>
     </div>
-  )
-}
+  );
+};

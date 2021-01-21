@@ -1,10 +1,10 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 
-import MainSection from "../../components/MainSection"
-import ListCardImage from "../../components/ListCardImage"
-import AppLayout from "../../containers/AppLayout"
-import useGlobalMedia from "../../hooks/useGlobalMedia"
-import useGlobalUser from "../../hooks/useGlobalUser"
+import MainSection from "../../components/MainSection";
+import ListCardImage from "../../components/ListCardImage";
+import AppLayout from "../../containers/AppLayout";
+import useGlobalMedia from "../../hooks/useGlobalMedia";
+import useGlobalUser from "../../hooks/useGlobalUser";
 
 const Home = () => {
   const {
@@ -13,14 +13,14 @@ const Home = () => {
     movies,
     isMoviesLoading,
     isMoviesError,
-  } = useGlobalMedia()
-  const { getWatchingList } = useGlobalUser()
+  } = useGlobalMedia();
+  const { getWatchingList } = useGlobalUser();
 
   useEffect(() => {
-    getGenres()
-    getMovies()
-    getWatchingList()
-  }, [getGenres, getMovies, getWatchingList])
+    getGenres();
+    getMovies();
+    getWatchingList();
+  }, [getGenres, getMovies, getWatchingList]);
 
   return (
     <AppLayout>
@@ -33,7 +33,7 @@ const Home = () => {
         />
       </MainSection>
     </AppLayout>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,57 +1,57 @@
-import React, { useState, useRef, useEffect } from "react"
-import { useLocation } from "wouter"
-import "./Detail.css"
+import React, { useState, useRef, useEffect } from "react";
+import { useLocation } from "wouter";
+import "./Detail.css";
 
-import MainSection from "../../components/MainSection"
-import InfoRanking from "../../components/InfoRanking"
-import VideoPlayer from "../../components/VideoPlayer"
-import ButtonCheck from "../../components/ButtonCheck"
-import ButtonNormal from "../../components/ButtonNormal"
-import Overview from "../../components/Overview"
-import AppLayout from "../../containers/AppLayout"
-import useGlobalUser from "../../hooks/useGlobalUser"
-import useGlobalMedia from "../../hooks/useGlobalMedia"
+import MainSection from "../../components/MainSection";
+import InfoRanking from "../../components/InfoRanking";
+import VideoPlayer from "../../components/VideoPlayer";
+import ButtonCheck from "../../components/ButtonCheck";
+import ButtonNormal from "../../components/ButtonNormal";
+import Overview from "../../components/Overview";
+import AppLayout from "../../containers/AppLayout";
+import useGlobalUser from "../../hooks/useGlobalUser";
+import useGlobalMedia from "../../hooks/useGlobalMedia";
 
 const setValueBarProgress = ({ bar, time, duration }) => {
   if (time > 0) {
-    bar.current.style.width = (time / duration) * 100 + "%"
+    bar.current.style.width = (time / duration) * 100 + "%";
   }
-}
+};
 
 const Detail = ({ params }) => {
-  const typeMedia = /\w[a-z]+/.exec(window.location.pathname)[0]
-  const [, pushLocation] = useLocation()
-  const [media, setMedia] = useState(null)
-  const { getSingleMedia } = useGlobalMedia()
-  const { getTimeMovie } = useGlobalUser()
-  const [activePlayerVideo, setActivePlayerVideo] = useState(false)
-  const [replay, setReplay] = useState(false)
-  const barProgress = useRef(null)
+  const typeMedia = /\w[a-z]+/.exec(window.location.pathname)[0];
+  const [, pushLocation] = useLocation();
+  const [media, setMedia] = useState(null);
+  const { getSingleMedia } = useGlobalMedia();
+  const { getTimeMovie } = useGlobalUser();
+  const [activePlayerVideo, setActivePlayerVideo] = useState(false);
+  const [replay, setReplay] = useState(false);
+  const barProgress = useRef(null);
 
   const handleWatchMedia = () => {
-    setActivePlayerVideo(true)
-  }
+    setActivePlayerVideo(true);
+  };
 
   const handleOnClick = () => {
-    pushLocation("/")
-  }
+    pushLocation("/");
+  };
 
   const handleExitVideoPlayer = () => {
-    setActivePlayerVideo(false)
-  }
+    setActivePlayerVideo(false);
+  };
 
   useEffect(
     function () {
-      const { time, duration } = getTimeMovie({ id: params.id })
+      const { time, duration } = getTimeMovie({ id: params.id });
       if (typeMedia === "movies")
-        setValueBarProgress({ bar: barProgress, time, duration })
-      setMedia(getSingleMedia({ id: params.id, typeMedia: typeMedia }))
-      setReplay(() => (time > 0 ? true : false))
+        setValueBarProgress({ bar: barProgress, time, duration });
+      setMedia(getSingleMedia({ id: params.id, typeMedia: typeMedia }));
+      setReplay(() => (time > 0 ? true : false));
 
       // return () => updateUserState()
     },
     [getTimeMovie, getSingleMedia, params.id, typeMedia]
-  )
+  );
 
   return (
     <AppLayout>
@@ -69,7 +69,10 @@ const Detail = ({ params }) => {
               <div className="sidebar__solid-color"></div>
 
               <div className="sidebar__content">
-                <button className="sidebar__button-back" onClick={handleOnClick}>
+                <button
+                  className="sidebar__button-back"
+                  onClick={handleOnClick}
+                >
                   <svg
                     className="sidebar__icon-button-back"
                     x="0px"
@@ -134,7 +137,7 @@ const Detail = ({ params }) => {
         )}
       </MainSection>
     </AppLayout>
-  )
-}
+  );
+};
 
-export default Detail
+export default Detail;

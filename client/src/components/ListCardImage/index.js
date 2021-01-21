@@ -1,9 +1,9 @@
-import React from "react"
-import "./ListCardImage.css"
+import React from "react";
+import "./ListCardImage.css";
 
-import Carousel from "react-elastic-carousel"
-import CardImage from "../CardImage"
-import SkeletonCardImage from "../SkeletonCardImage"
+import Carousel from "react-elastic-carousel";
+import CardImage from "../CardImage";
+import SkeletonCardImage from "../SkeletonCardImage";
 
 const ListCardImage = ({ media, typeMedia, isLoading, isError }) => {
   return (
@@ -31,7 +31,7 @@ const ListCardImage = ({ media, typeMedia, isLoading, isError }) => {
           <SkeletonCardImage key={element} />
         ))}
     </Carousel>
-  )
-}
+  );
+};
 
-export default ListCardImage
+export default ListCardImage;

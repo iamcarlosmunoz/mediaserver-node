@@ -1,32 +1,35 @@
-import React, { useEffect } from "react"
-import "./styles.css"
+import React, { useEffect } from "react";
+import "./styles.css";
 
-import useGlobalUser from "../../hooks/useGlobalUser"
-import { useLocation } from "wouter"
+import useGlobalUser from "../../hooks/useGlobalUser";
+import { useLocation } from "wouter";
 
 const MainHeader = () => {
-  const [, pushLocation] = useLocation()
-  const { logout, isLogged, user } = useGlobalUser()
+  const [, pushLocation] = useLocation();
+  const { logout, isLogged, user } = useGlobalUser();
 
   useEffect(
     function () {
       if (!isLogged) {
-        pushLocation("/login")
+        pushLocation("/login");
       }
     },
     [isLogged, pushLocation]
-  )
+  );
 
   const handleClick = () => {
-    logout()
-  }
+    logout();
+  };
 
   return (
     <>
       {isLogged && (
         <header className="main-header">
           <form action="" className="main-header__search">
-            <button className="main-header__button focus--box-shadow" type="submit">
+            <button
+              className="main-header__button focus--box-shadow"
+              type="submit"
+            >
               <svg
                 className="main-header__icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +61,7 @@ const MainHeader = () => {
         </header>
       )}
     </>
-  )
-}
+  );
+};
 
-export default MainHeader
+export default MainHeader;

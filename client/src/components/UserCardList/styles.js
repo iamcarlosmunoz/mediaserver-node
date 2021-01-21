@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const List = styled.div`
   width: 100vw;
@@ -7,7 +7,7 @@ export const List = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-`
+`;
 
 export const TitleList = styled.h1`
   font-size: 4em;
@@ -22,4 +22,4 @@ export const TitleList = styled.h1`
     font-size: 3em;
     margin-bottom: 1em;
   }
-`
+`;

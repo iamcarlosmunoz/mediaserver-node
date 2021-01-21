@@ -1,48 +1,48 @@
-import React, { useState, useRef, useEffect } from "react"
-import "./VideoPlayer.css"
+import React, { useState, useRef, useEffect } from "react";
+import "./VideoPlayer.css";
 
-import { ButtonPlayVideo, ButtonPauseVideo } from "./buttons"
-import useEventListener from "../../hooks/useEventListener"
-import Overview from "../../components/Overview"
-import useGlobalUser from "../../hooks/useGlobalUser"
+import { ButtonPlayVideo, ButtonPauseVideo } from "./buttons";
+import useEventListener from "../../hooks/useEventListener";
+import Overview from "../../components/Overview";
+import useGlobalUser from "../../hooks/useGlobalUser";
 
 const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
-  const [stateVideoPlayer, setStateVideoPlayer] = useState("pause")
-  const { updateMovieStatus, getTimeMovieWatching } = useGlobalUser()
-  const [timeVideo, setTimeVideo] = useState({ timeCurrent: 0, time: 0 })
-  const video = useRef(null)
-  const containerInfo = useRef(null)
-  const containerVideo = useRef(null)
-  const containerProgressBarVideoPlayer = useRef(null)
-  const progressBarVideoPlayer = useRef(null)
+  const [stateVideoPlayer, setStateVideoPlayer] = useState("pause");
+  const { updateMovieStatus, getTimeMovieWatching } = useGlobalUser();
+  const [timeVideo, setTimeVideo] = useState({ timeCurrent: 0, time: 0 });
+  const video = useRef(null);
+  const containerInfo = useRef(null);
+  const containerVideo = useRef(null);
+  const containerProgressBarVideoPlayer = useRef(null);
+  const progressBarVideoPlayer = useRef(null);
 
   const toggleFullScreen = (element) => {
     if (!document.fullscreenElement) {
       if (element.requestFullscreen) {
-        element.requestFullscreen()
+        element.requestFullscreen();
       } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen()
+        element.mozRequestFullScreen();
       } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen()
+        element.webkitRequestFullscreen();
       } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen()
+        element.msRequestFullscreen();
       }
     } else {
       if (document.exitFullscreen) {
-        document.exitFullscreen()
+        document.exitFullscreen();
       }
     }
-  }
+  };
 
   const handlePlayPauseVideo = () => {
     if (stateVideoPlayer === "pause") {
-      setStateVideoPlayer("play")
-      video.current.play()
+      setStateVideoPlayer("play");
+      video.current.play();
     } else if (stateVideoPlayer === "play") {
-      setStateVideoPlayer("pause")
-      video.current.pause()
+      setStateVideoPlayer("pause");
+      video.current.pause();
     }
-  }
+  };
 
   const handleExitVideoPlayer = () => {
     if (typeMedia === "movies") {
@@ -50,64 +50,64 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
         id: mediaData.id,
         time: timeVideo.timeCurrent,
         duration: timeVideo.time,
-      })
+      });
     }
 
-    setStateVideoPlayer("pause")
-    toggleFullScreen(video.current)
-    handleExit()
-  }
+    setStateVideoPlayer("pause");
+    toggleFullScreen(video.current);
+    handleExit();
+  };
 
   const handleBarProgress = () => {
-    let progress = video.current.currentTime / video.current.duration
-    progressBarVideoPlayer.current.style.width = progress * 100 + "%"
+    let progress = video.current.currentTime / video.current.duration;
+    progressBarVideoPlayer.current.style.width = progress * 100 + "%";
 
     setTimeVideo({
       timeCurrent: video.current.currentTime,
       time: video.current.duration,
-    })
+    });
 
     if (video.current.ended) {
-      setStateVideoPlayer("pause")
+      setStateVideoPlayer("pause");
     }
-  }
+  };
 
   const secondsToString = (seconds) => {
-    let hour = Math.floor(seconds / 3600)
-    hour = hour < 10 ? "0" + hour : hour
+    let hour = Math.floor(seconds / 3600);
+    hour = hour < 10 ? "0" + hour : hour;
 
-    let minute = Math.floor((seconds / 60) % 60)
-    minute = minute < 10 ? "0" + minute : minute
+    let minute = Math.floor((seconds / 60) % 60);
+    minute = minute < 10 ? "0" + minute : minute;
 
-    let second = seconds % 60
-    second = second < 10 ? "0" + second : second
+    let second = seconds % 60;
+    second = second < 10 ? "0" + second : second;
 
-    return hour + ":" + minute + ":" + second
-  }
+    return hour + ":" + minute + ":" + second;
+  };
 
   useEffect(
     function () {
       // Get latest playing time
       if (typeMedia === "movies") {
-        const { timeCurrent } = getTimeMovieWatching(mediaData.id)
-        video.current.currentTime = timeCurrent
+        const { timeCurrent } = getTimeMovieWatching(mediaData.id);
+        video.current.currentTime = timeCurrent;
       }
 
       // Fullscreen and play video
-      toggleFullScreen(containerVideo.current)
-      setStateVideoPlayer("play")
-      video.current.play()
+      toggleFullScreen(containerVideo.current);
+      setStateVideoPlayer("play");
+      video.current.play();
     },
     [getTimeMovieWatching, mediaData.id, typeMedia]
-  )
+  );
 
-  useEventListener(video, "timeupdate", handleBarProgress)
-  useEventListener(video, "click", handlePlayPauseVideo)
-  useEventListener(containerInfo, "click", handlePlayPauseVideo)
+  useEventListener(video, "timeupdate", handleBarProgress);
+  useEventListener(video, "click", handlePlayPauseVideo);
+  useEventListener(containerInfo, "click", handlePlayPauseVideo);
   useEventListener(containerProgressBarVideoPlayer, "click", function (e) {
-    let pos = (e.pageX - this.offsetLeft) / this.offsetWidth
-    video.current.currentTime = pos * video.current.duration
-  })
+    let pos = (e.pageX - this.offsetLeft) / this.offsetWidth;
+    video.current.currentTime = pos * video.current.duration;
+  });
 
   return (
     <div className="video-player" ref={containerVideo}>
@@ -120,7 +120,8 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
       <div
         ref={containerInfo}
         className={`video-player__container-title ${
-          stateVideoPlayer === "pause" && " video-player__container-title--hover"
+          stateVideoPlayer === "pause" &&
+          " video-player__container-title--hover"
         }`}
       >
         <img
@@ -187,7 +188,7 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default VideoPlayer
+export default VideoPlayer;

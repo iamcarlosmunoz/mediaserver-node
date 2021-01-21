@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "wouter"
+import React from "react";
+import { Link } from "wouter";
 
 const Tag = ({ data, link = false, typeMedia, date = false }) => {
   return (
@@ -13,7 +13,7 @@ const Tag = ({ data, link = false, typeMedia, date = false }) => {
       {!link && !date && <span className="ms__tag">{data.name}</span>}
       {!link && date && <span className="ms__tag">{data}</span>}
     </>
-  )
-}
+  );
+};
 
-export default Tag
+export default Tag;

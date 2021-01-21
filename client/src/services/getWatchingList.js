@@ -6,11 +6,11 @@ export default async function getWatchingList({ token }) {
     },
   })
     .then((res) => {
-      if (!res.ok) throw new Error("Response is NOT ok")
-      return res.json()
+      if (!res.ok) throw new Error("Response is NOT ok");
+      return res.json();
     })
     .then((res) => {
-      const { watching_list } = res
-      return watching_list
-    })
+      const { watching_list } = res;
+      return watching_list;
+    });
 }

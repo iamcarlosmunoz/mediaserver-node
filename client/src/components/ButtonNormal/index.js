@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react"
-import "./ButtonNormal.css"
+import React, { useState, useEffect } from "react";
+import "./ButtonNormal.css";
 
 const ButtonNormal = ({ value, marginLeft = "0px", onClick }) => {
-  const [valueButton, setValueButton] = useState("Reproducir")
+  const [valueButton, setValueButton] = useState("Reproducir");
 
   const handleClick = () => {
     if (valueButton !== "Volver A Ver") {
-      onClick()
+      onClick();
     }
-  }
+  };
 
   useEffect(
     function () {
-      setValueButton(value)
+      setValueButton(value);
     },
     [value]
-  )
+  );
 
   return (
     <button
@@ -47,7 +47,7 @@ const ButtonNormal = ({ value, marginLeft = "0px", onClick }) => {
       )}
       {valueButton}
     </button>
-  )
-}
+  );
+};
 
-export default ButtonNormal
+export default ButtonNormal;

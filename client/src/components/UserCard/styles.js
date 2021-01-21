@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Card = styled.button`
   width: 13em;
@@ -33,7 +33,7 @@ export const Card = styled.button`
     font-size: 8px;
     margin-bottom: 2em;
   }
-`
+`;
 
 export const ContainerCard = styled.div`
   width: 100%;
@@ -46,15 +46,15 @@ export const ContainerCard = styled.div`
   ${Card}:hover & {
     box-shadow: 0px 0px 0px 0.4em #f96d00;
   }
-`
+`;
 
 export const ImgCard = styled.img`
   width: 100%;
-`
+`;
 
 export const NameTitleCard = styled.h3`
   font-size: 1.8em;
   margin-top: 0.35em;
   margin-bottom: 0.2em;
   text-align: center;
-`
+`;

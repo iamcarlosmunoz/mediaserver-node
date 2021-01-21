@@ -1,89 +1,96 @@
-import { useCallback, useContext, useState } from "react"
-import Context from "../context/MediaContext"
+import { useCallback, useContext, useState } from "react";
+import Context from "../context/MediaContext";
 
-import getAllMediaService from "../services/getAllMedia"
-import getAllGenresService from "../services/getAllGenres"
+import getAllMediaService from "../services/getAllMedia";
+import getAllGenresService from "../services/getAllGenres";
 
 export default function useGlobalMedia() {
-  const { genres, setGenres, movies, series, setMovies, setSeries } = useContext(
-    Context
-  )
+  const {
+    genres,
+    setGenres,
+    movies,
+    series,
+    setMovies,
+    setSeries,
+  } = useContext(Context);
   const [stateGenres, setStateGenres] = useState({
     isLoading: false,
     error: false,
-  })
+  });
   const [stateMovies, setStateMovies] = useState({
     isLoading: false,
     error: false,
-  })
+  });
   const [stateSeries, setStateSeries] = useState({
     isLoading: false,
     error: false,
-  })
+  });
 
   const getGenres = useCallback(() => {
-    setStateGenres({ isLoading: true, error: false })
+    setStateGenres({ isLoading: true, error: false });
 
     getAllGenresService()
       .then((result) => {
-        setStateGenres({ isLoading: false, error: false })
-        setGenres(result)
+        setStateGenres({ isLoading: false, error: false });
+        setGenres(result);
       })
       .catch(() => {
-        setStateGenres({ isLoading: false, error: true })
-      })
-  }, [setGenres])
+        setStateGenres({ isLoading: false, error: true });
+      });
+  }, [setGenres]);
 
   const getMovies = useCallback(() => {
-    setStateMovies({ isLoading: true, error: false })
+    setStateMovies({ isLoading: true, error: false });
 
     getAllMediaService({ typeMedia: "movies" })
       .then((result) => {
-        setStateMovies({ isLoading: false, error: false })
-        setMovies(result)
+        setStateMovies({ isLoading: false, error: false });
+        setMovies(result);
       })
       .catch(() => {
-        setStateMovies({ isLoading: false, error: true })
-      })
-  }, [setMovies])
+        setStateMovies({ isLoading: false, error: true });
+      });
+  }, [setMovies]);
 
   const getSeries = useCallback(() => {
-    setStateSeries({ isLoading: true, error: false })
+    setStateSeries({ isLoading: true, error: false });
 
     getAllMediaService({ typeMedia: "series" })
       .then((result) => {
-        setStateSeries({ isLoading: false, error: false })
-        setSeries(result)
+        setStateSeries({ isLoading: false, error: false });
+        setSeries(result);
       })
       .catch(() => {
-        setStateSeries({ isLoading: false, error: true })
-      })
-  }, [setSeries])
+        setStateSeries({ isLoading: false, error: true });
+      });
+  }, [setSeries]);
 
   const getSingleMedia = useCallback(
     ({ id, typeMedia }) => {
       if (typeMedia === "movies" && movies) {
-        const movieFound = movies.find((movie) => movie.id === parseInt(id, 10))
-        return !movieFound ? null : movieFound
+        const movieFound = movies.find(
+          (movie) => movie.id === parseInt(id, 10)
+        );
+        return !movieFound ? null : movieFound;
       }
     },
     [movies]
-  )
+  );
 
   const getGenresById = useCallback(
     ({ tags }) => {
-      const arrayGenres = []
+      const arrayGenres = [];
 
       tags.map((tag) => {
-        let tagFound = genres.find((genre) => genre.id === tag)
-        if (tagFound) arrayGenres.push(tagFound)
-        return tag
-      })
+        let tagFound = genres.find((genre) => genre.id === tag);
+        if (tagFound) arrayGenres.push(tagFound);
+        return tag;
+      });
 
-      return arrayGenres
+      return arrayGenres;
     },
     [genres]
-  )
+  );
 
   return {
     getGenres,
@@ -99,5 +106,5 @@ export default function useGlobalMedia() {
     isMoviesError: stateMovies.error,
     isSeriesLoading: stateSeries.isLoading,
     isseriesError: stateSeries.error,
-  }
+  };
 }
