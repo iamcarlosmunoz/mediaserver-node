@@ -28,8 +28,7 @@
 }
 
 .video-player__controls.video-player__hover:hover,
-.video-player__hover-controls.video-player__hover:hover
-  ~ .video-player__controls {
+.video-player__hover-controls.video-player__hover:hover ~ .video-player__controls {
   transform: translateY(0);
 }
 

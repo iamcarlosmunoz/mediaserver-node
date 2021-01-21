@@ -1,13 +1,13 @@
-import React from "react";
-import { useLocation } from "wouter";
-import "./CardImage.css";
+import React from "react"
+import { useLocation } from "wouter"
+import "./CardImage.css"
 
 const CardImage = ({ typeMedia = "movies", data }) => {
-  const [path, pushLocation] = useLocation();
+  const [path, pushLocation] = useLocation()
 
   const handleClick = () => {
-    pushLocation(`${typeMedia}/${data.id}`);
-  };
+    pushLocation(`${typeMedia}/${data.id}`)
+  }
 
   return (
     <div className="card-image">
@@ -34,7 +34,7 @@ const CardImage = ({ typeMedia = "movies", data }) => {
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CardImage;
+export default CardImage

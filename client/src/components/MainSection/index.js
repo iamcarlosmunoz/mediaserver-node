@@ -1,5 +1,5 @@
-import React from "react";
-import "./MainSection.css";
+import React from "react"
+import "./MainSection.css"
 
 const MainSection = ({ titleSection, children }) => {
   return (
@@ -9,7 +9,7 @@ const MainSection = ({ titleSection, children }) => {
       )}
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default MainSection;
+export default MainSection

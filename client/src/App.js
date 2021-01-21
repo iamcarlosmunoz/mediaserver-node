@@ -1,12 +1,12 @@
-import React from "react";
-import { Route, Switch } from "wouter";
+import React from "react"
+import { Route, Switch } from "wouter"
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Detail from "./pages/Detail";
+import Home from "./pages/Home"
+import Login from "./pages/Login"
+import Detail from "./pages/Detail"
 
-import { UserProvider } from "./context/UserContext";
-import { MediaProvider } from "./context/MediaContext";
+import { UserProvider } from "./context/UserContext"
+import { MediaProvider } from "./context/MediaContext"
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
         </Switch>
       </MediaProvider>
     </UserProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

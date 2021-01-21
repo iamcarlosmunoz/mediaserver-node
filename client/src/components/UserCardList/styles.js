@@ -6,11 +6,10 @@ export const List = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;  
+  flex-wrap: wrap;
 `
 
 export const TitleList = styled.h1`
-
   font-size: 4em;
   margin-bottom: 1em;
 

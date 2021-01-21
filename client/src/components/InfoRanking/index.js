@@ -1,7 +1,7 @@
-import React from "react";
-import "./InfoRanking.css";
+import React from "react"
+import "./InfoRanking.css"
 
-import Star from "./Star";
+import Star from "./Star"
 
 const InfoRanking = ({ ranking }) => {
   return (
@@ -13,7 +13,7 @@ const InfoRanking = ({ ranking }) => {
       <Star starDark={ranking > 8} />
       <Star starDark={ranking > 10} />
     </div>
-  );
-};
+  )
+}
 
-export default InfoRanking;
+export default InfoRanking

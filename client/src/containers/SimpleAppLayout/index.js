@@ -1,12 +1,8 @@
-import React from "react";
-import "./styles.css";
+import React from "react"
+import "./styles.css"
 
 const SimpleAppLayout = ({ children }) => {
-  return (
-    <div className="imposter imposter--center">
-      {children}
-    </div>
-  );
-};
+  return <div className="imposter imposter--center">{children}</div>
+}
 
-export default SimpleAppLayout;
+export default SimpleAppLayout

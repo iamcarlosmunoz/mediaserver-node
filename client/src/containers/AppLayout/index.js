@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 
-import MainNavigation from "../../components/MainNavigation";
-import MainHeader from "../../components/MainHeader";
+import MainNavigation from "../../components/MainNavigation"
+import MainHeader from "../../components/MainHeader"
 
-import "./styles.css";
+import "./styles.css"
 
 const AppLayout = ({ children }) => {
   return (
@@ -14,7 +14,7 @@ const AppLayout = ({ children }) => {
         {children}
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default AppLayout;
+export default AppLayout

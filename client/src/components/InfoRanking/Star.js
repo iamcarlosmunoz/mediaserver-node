@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const Star = ({ starDark }) => {
   return (
@@ -14,7 +14,7 @@ const Star = ({ starDark }) => {
         fill="#ffc107"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default Star;
+export default Star

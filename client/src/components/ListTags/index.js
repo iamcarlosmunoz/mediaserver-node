@@ -1,12 +1,12 @@
-import React from "react";
-import useGlobalMedia from "../../hooks/useGlobalMedia";
-import "./ListTags.css";
+import React from "react"
+import useGlobalMedia from "../../hooks/useGlobalMedia"
+import "./ListTags.css"
 
-import Tag from "./Tag";
+import Tag from "./Tag"
 
 const ListTags = ({ typeMedia, releaseDate, tags }) => {
-  const { getGenresById } = useGlobalMedia();
-  const genres = getGenresById({ tags });
+  const { getGenresById } = useGlobalMedia()
+  const genres = getGenresById({ tags })
 
   return (
     <div className="ms__container-tags">
@@ -15,7 +15,7 @@ const ListTags = ({ typeMedia, releaseDate, tags }) => {
         <Tag data={element} key={element.id} typeMedia={typeMedia} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ListTags;
+export default ListTags

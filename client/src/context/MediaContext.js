@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-const Context = React.createContext({});
+const Context = React.createContext({})
 
 export function MediaProvider({ children }) {
-  const [movies, setMovies] = useState(null);
-  const [series, setSeries] = useState(null);
-  const [genres, setGenres] = useState(null);
+  const [movies, setMovies] = useState(null)
+  const [series, setSeries] = useState(null)
+  const [genres, setGenres] = useState(null)
 
   return (
     <Context.Provider
@@ -13,7 +13,7 @@ export function MediaProvider({ children }) {
     >
       {children}
     </Context.Provider>
-  );
+  )
 }
 
-export default Context;
+export default Context

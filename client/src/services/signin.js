@@ -7,11 +7,11 @@ export default async function signin({ id, password }) {
     body: JSON.stringify({ id, password }),
   })
     .then((res) => {
-      if (!res.ok) throw new Error("Response is NOT ok");
-      return res.json();
+      if (!res.ok) throw new Error("Response is NOT ok")
+      return res.json()
     })
     .then((res) => {
-      const { token } = res;
-      return token;
-    });
+      const { token } = res
+      return token
+    })
 }

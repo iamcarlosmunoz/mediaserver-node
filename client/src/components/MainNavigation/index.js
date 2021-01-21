@@ -1,9 +1,9 @@
-import React from "react";
-import { Link, useLocation } from "wouter";
-import "./MainNavigation.css";
+import React from "react"
+import { Link, useLocation } from "wouter"
+import "./MainNavigation.css"
 
 const MainNavigation = () => {
-  const [location] = useLocation();
+  const [location] = useLocation()
 
   return (
     <nav className="main-nav">
@@ -138,7 +138,7 @@ const MainNavigation = () => {
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default MainNavigation;
+export default MainNavigation
