@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../styles/index";
 
 export const Card = styled.button`
   width: 13em;
@@ -44,7 +45,7 @@ export const ContainerCard = styled.div`
   transition: all 0.5s ease;
 
   ${Card}:hover & {
-    box-shadow: 0px 0px 0px 0.4em #f96d00;
+    box-shadow: 0px 0px 0px 0.4em ${theme.colors.primary};
   }
 `;
 
