@@ -1,34 +1,27 @@
-.focus--box-shadow:focus {
-  z-index: 1;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(36, 34, 33, 0.5);
-}
+import styled from "styled-components";
 
-.imposter {
+export const Imposter = styled.div`
   min-height: 100vh;
   display: flex;
-}
-
-.imposter--center-x-start {
   align-items: flex-start;
   justify-content: center;
-}
 
-.imposter--center {
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+`;
+
+export const MainSimple = styled.main`
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-}
+`;
 
-@media (max-width: 768px) {
-  .imposter--center-y-reverse {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-}
-
-.container {
+export const Main = styled.main`
   width: calc(100% - 10em);
   min-height: 100vh;
   display: flex;
@@ -39,14 +32,9 @@
   padding-left: 0;
   padding-right: 2em;
   padding-bottom: 2em;
-}
-
-.container--center-x {
   align-items: center;
-}
 
-@media (max-width: 768px) {
-  .container--long-width {
+  @media (max-width: 768px) {
     width: 90%;
     padding-top: 0;
     padding-left: 0;
@@ -54,4 +42,4 @@
     padding-bottom: 0;
     margin-bottom: 6em;
   }
-}
+`;

@@ -8,7 +8,7 @@ import VideoPlayer from "../../components/VideoPlayer";
 import ButtonCheck from "../../components/ButtonCheck";
 import ButtonNormal from "../../components/ButtonNormal";
 import Overview from "../../components/Overview";
-import AppLayout from "../../containers/AppLayout";
+import MainLayout from "../../containers/MainLayout";
 import useGlobalUser from "../../hooks/useGlobalUser";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 
@@ -54,7 +54,7 @@ const Detail = ({ params }) => {
   );
 
   return (
-    <AppLayout>
+    <MainLayout>
       <MainSection>
         {media && (
           <div className="sidebar">
@@ -136,7 +136,7 @@ const Detail = ({ params }) => {
           />
         )}
       </MainSection>
-    </AppLayout>
+    </MainLayout>
   );
 };
 

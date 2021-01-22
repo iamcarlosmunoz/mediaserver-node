@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import MainSection from "../../components/MainSection";
 import ListCardImage from "../../components/ListCardImage";
-import AppLayout from "../../containers/AppLayout";
+import MainLayout from "../../containers/MainLayout";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 import useGlobalUser from "../../hooks/useGlobalUser";
 
@@ -23,7 +23,7 @@ const Home = () => {
   }, [getGenres, getMovies, getWatchingList]);
 
   return (
-    <AppLayout>
+    <MainLayout>
       <MainSection titleSection={"Peliculas Agregadas"}>
         <ListCardImage
           typeMedia={"movies"}
@@ -32,7 +32,7 @@ const Home = () => {
           isError={isMoviesError}
         />
       </MainSection>
-    </AppLayout>
+    </MainLayout>
   );
 };
 
