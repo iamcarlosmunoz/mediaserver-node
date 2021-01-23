@@ -49,7 +49,7 @@ export const Item = styled.li`
   }
 
   &:hover path {
-    fill: ${theme.colors.textLight};
+    fill: ${theme.colors.textDark};
   }
 
   & path {
