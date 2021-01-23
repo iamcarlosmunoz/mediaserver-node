@@ -5,6 +5,7 @@ import ListCardImage from "../../components/ListCardImage";
 import MainLayout from "../../containers/MainLayout";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 import useGlobalUser from "../../hooks/useGlobalUser";
+import LongSection from "../../components/LongSection";
 
 const Home = () => {
   const {
@@ -24,6 +25,7 @@ const Home = () => {
 
   return (
     <MainLayout>
+      <LongSection />
       <MainSection titleSection={"Peliculas Agregadas"}>
         <ListCardImage
           typeMedia={"movies"}
