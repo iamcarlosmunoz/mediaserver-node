@@ -22,6 +22,7 @@ const MainNavigation = () => {
             <Item
               active={location === `/${item}` ? true : false}
               margin={item !== "" ? true : false}
+              key={item}
             >
               <Link href={`/${item}`}>
                 <NavLink>
