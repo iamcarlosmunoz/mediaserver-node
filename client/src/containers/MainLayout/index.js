@@ -4,14 +4,16 @@ import MainNavigation from "../../components/MainNavigation";
 import MainHeader from "../../components/MainHeader";
 
 import { Imposter, Main, MainSimple } from "./styles";
+import { SvgSingleWave } from "../../components/common/SvgForms";
 
 const MainLayout = ({ simple = false, children }) => {
   return simple ? (
     <MainSimple>{children}</MainSimple>
   ) : (
     <Imposter>
+      <SvgSingleWave />
       <MainNavigation />
-      <Main className="container container--long-width">
+      <Main>
         <MainHeader />
         {children}
       </Main>
