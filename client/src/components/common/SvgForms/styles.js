@@ -17,7 +17,7 @@ export const FormWave = styled.div`
     height: 450px;
   }
 
-  & .shape-fill {
+  & path {
     fill: ${theme.colors.primary};
   }
 `;

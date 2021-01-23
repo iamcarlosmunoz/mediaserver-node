@@ -6,11 +6,11 @@ export const Nav = styled.nav`
   height: 100vh;
   display: flex;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
 
   @media (max-width: 768px) {
     width: 100%;
-    height: auto;
+    height: 6em;
     position: fixed;
     bottom: 0;
   }
