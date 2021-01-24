@@ -17,7 +17,27 @@ export const FormWave = styled.div`
     height: 450px;
   }
 
-  & path {
+  & svg path {
     fill: ${theme.colors.primary};
+  }
+`;
+
+export const FormWave2 = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+
+  & svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 10em;
+  }
+
+  & svg path {
+    fill: ${theme.colors.textLight};
   }
 `;
