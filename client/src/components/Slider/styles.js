@@ -8,9 +8,8 @@ export const Container = styled.div`
   margin-bottom: 1.5em;
   border-radius: 10px;
   display: flex;
-  background-image: ${({ img }) => `url(img/movies/${img})`};
-  background-size: cover;
   overflow: hidden;
+  background: rgba(34, 34, 34, 0.8);
 
   @media (min-width: 1400px) {
     height: 35em;
@@ -27,7 +26,11 @@ export const DegradedLayer = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(34, 34, 34, 0.8);
+  opacity: ${({ active }) => (active ? 1 : 0)};
+  transition: opacity 0.6s ease;
+  background-image: ${({ img }) => `url(img/movies/${img})`};
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(34, 34, 34, 0.8);
 `;
 
 export const InfoContainer = styled.div`
@@ -42,6 +45,11 @@ export const InfoContainer = styled.div`
   align-items: flex-start;
   padding-left: 5em;
 
+  @media (max-width: 768px) {
+    padding-left: 3em;
+    height: 90%;
+  }
+
   @media (min-width: 1400px) {
     padding-left: 10em;
   }
@@ -55,34 +63,6 @@ export const ControlsContainer = styled.div`
   @media (max-width: 768px) {
     right: 1.5em;
     bottom: 1.2em;
-  }
-`;
-
-export const Control = styled.button`
-  background: ${theme.colors.primary};
-  width: 3em;
-  height: 3em;
-  border: 0;
-  border-radius: 10px;
-  padding: 0.6em;
-  margin-left: ${({ flipX }) => (flipX ? "1em" : "0")};
-  transform: ${({ flipX }) => (flipX ? "scaleX(-1)" : "none")};
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  outline: none;
-  z-index: 1;
-
-  &:hover {
-    box-shadow: 0px 0px 0px 0.2em ${theme.colors.textDark};
-  }
-
-  & svg path {
-    width: 100%;
-    height: 100%;
-  }
-
-  & svg path {
-    fill: ${theme.colors.textDark};
   }
 `;
 
@@ -130,6 +110,8 @@ export const ButtonDetail = styled.button`
   @media (max-width: 768px) {
     right: 2em;
     top: 2em;
+    width: 4em;
+    height: 4em;
   }
 
   @media (min-width: 1400px) {

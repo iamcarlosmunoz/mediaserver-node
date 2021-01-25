@@ -14,7 +14,7 @@ import ListTags from "../ListTags";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 import ButtonControl from "../ButtonControl";
 
-const LongSection = () => {
+const Slider = () => {
   const { movies } = useGlobalMedia();
   const [current, setCurrent] = useState(1);
   const [disabled, setDisabled] = useState({ prev: true, next: false });
@@ -39,8 +39,13 @@ const LongSection = () => {
   return (
     <>
       {movies && (
-        <Container img={movies[movies.length - current].backdrop_path}>
-          <DegradedLayer />
+        <Container>
+          {[1, 2, 3, 4, 5].map((item) => (
+            <DegradedLayer
+              active={current === item ? true : false}
+              img={movies[movies.length - item].backdrop_path}
+            />
+          ))}
           <ButtonDetail>
             <IconPlay />
           </ButtonDetail>
@@ -67,8 +72,22 @@ const LongSection = () => {
           </ControlsContainer>
         </Container>
       )}
+      {!movies && (
+        <Container>
+          <SvgSingleWave2 />
+          <TitleSlider> Últimos Agregados</TitleSlider>
+          <ControlsContainer>
+            <ButtonControl onClick={handleClickPrev} disabled={true} />
+            <ButtonControl
+              onClick={handleClickNext}
+              disabled={true}
+              flipX={true}
+            />
+          </ControlsContainer>
+        </Container>
+      )}
     </>
   );
 };
 
-export default LongSection;
+export default Slider;
