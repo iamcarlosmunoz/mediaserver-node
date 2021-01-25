@@ -8,20 +8,12 @@ import useGlobalUser from "../../hooks/useGlobalUser";
 import Slider from "../../components/Slider";
 
 const Home = () => {
-  const {
-    getGenres,
-    getMovies,
-    movies,
-    isMoviesLoading,
-    isMoviesError,
-  } = useGlobalMedia();
+  const { movies, isMoviesLoading, isMoviesError } = useGlobalMedia();
   const { getWatchingList } = useGlobalUser();
 
   useEffect(() => {
-    getGenres();
-    getMovies();
     getWatchingList();
-  }, [getGenres, getMovies, getWatchingList]);
+  }, [getWatchingList]);
 
   return (
     <MainLayout>

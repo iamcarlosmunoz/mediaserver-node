@@ -1,17 +1,9 @@
 import React, { useCallback, useState } from "react";
-import {
-  Container,
-  DegradedLayer,
-  Info,
-  Controls,
-  TitleSlider,
-} from "./styles";
+import { Container, Controls, TitleSlider } from "./styles";
 import { SvgSingleWave2 } from "../common/SvgForms";
-import InfoRanking from "../InfoRanking";
-import ListTags from "../ListTags";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 import ButtonControl from "../ButtonControl";
-import ButtonDetail from "../ButtonDetail";
+import SliderItem from "../SliderItem";
 
 const Slider = () => {
   const { movies } = useGlobalMedia();
@@ -40,26 +32,14 @@ const Slider = () => {
       {movies && (
         <Container>
           {[1, 2, 3, 4, 5].map((item) => (
-            <DegradedLayer
-              active={current === item ? true : false}
-              img={movies[movies.length - item].backdrop_path}
+            <SliderItem
+              item={item}
+              current={current}
+              media={movies}
+              typeMedia={"movies"}
+              key={"ms-slider-item" + item}
             />
           ))}
-          <ButtonDetail
-            parentPath={"movies"}
-            id={movies[movies.length - current].id}
-          />
-          <Info>
-            <h1>{movies[movies.length - current].title}</h1>
-            <InfoRanking
-              ranking={movies[movies.length - current].vote_average}
-            />
-            <ListTags
-              releaseDate={movies[movies.length - current].release_date}
-              typeMedia={"movies"}
-              tags={movies[movies.length - current].genre_ids}
-            />
-          </Info>
           <SvgSingleWave2 />
           <TitleSlider> Últimos Agregados</TitleSlider>
           <Controls>
