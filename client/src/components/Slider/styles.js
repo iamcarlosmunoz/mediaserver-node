@@ -33,7 +33,7 @@ export const DegradedLayer = styled.div`
   box-shadow: inset 0 0 0 2000px rgba(34, 34, 34, 0.8);
 `;
 
-export const InfoContainer = styled.div`
+export const Info = styled.div`
   position: absolute;
   width: 100%;
   height: 85%;
@@ -55,7 +55,7 @@ export const InfoContainer = styled.div`
   }
 `;
 
-export const ControlsContainer = styled.div`
+export const Controls = styled.div`
   position: absolute;
   bottom: 1.5em;
   right: 1.5em;
@@ -76,48 +76,5 @@ export const TitleSlider = styled.h2`
   @media (max-width: 768px) {
     left: 1em;
     bottom: 0.7em;
-  }
-`;
-
-export const ButtonDetail = styled.button`
-  position: absolute;
-  right: 18em;
-  top: 10em;
-  background: none;
-  width: 5em;
-  height: 5em;
-  border: 0;
-  border-radius: 10px;
-  padding: 0.6em;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  outline: none;
-  z-index: 1;
-
-  &:hover {
-    transform: scale(1.2);
-  }
-
-  & svg path {
-    width: 100%;
-    height: 100%;
-  }
-
-  & svg path {
-    fill: ${theme.colors.primary};
-  }
-
-  @media (max-width: 768px) {
-    right: 2em;
-    top: 2em;
-    width: 4em;
-    height: 4em;
-  }
-
-  @media (min-width: 1400px) {
-    right: 22em;
-    top: 13.5em;
-    width: 8em;
-    height: 8em;
   }
 `;

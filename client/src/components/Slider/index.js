@@ -2,17 +2,16 @@ import React, { useCallback, useState } from "react";
 import {
   Container,
   DegradedLayer,
-  InfoContainer,
-  ControlsContainer,
+  Info,
+  Controls,
   TitleSlider,
-  ButtonDetail,
 } from "./styles";
-import { IconPlay } from "../common/SvgIcons";
 import { SvgSingleWave2 } from "../common/SvgForms";
 import InfoRanking from "../InfoRanking";
 import ListTags from "../ListTags";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 import ButtonControl from "../ButtonControl";
+import ButtonDetail from "../ButtonDetail";
 
 const Slider = () => {
   const { movies } = useGlobalMedia();
@@ -46,10 +45,11 @@ const Slider = () => {
               img={movies[movies.length - item].backdrop_path}
             />
           ))}
-          <ButtonDetail>
-            <IconPlay />
-          </ButtonDetail>
-          <InfoContainer>
+          <ButtonDetail
+            parentPath={"movies"}
+            id={movies[movies.length - current].id}
+          />
+          <Info>
             <h1>{movies[movies.length - current].title}</h1>
             <InfoRanking
               ranking={movies[movies.length - current].vote_average}
@@ -59,31 +59,27 @@ const Slider = () => {
               typeMedia={"movies"}
               tags={movies[movies.length - current].genre_ids}
             />
-          </InfoContainer>
+          </Info>
           <SvgSingleWave2 />
           <TitleSlider> Últimos Agregados</TitleSlider>
-          <ControlsContainer>
+          <Controls>
             <ButtonControl onClick={handleClickPrev} disabled={disabled.prev} />
             <ButtonControl
               onClick={handleClickNext}
               disabled={disabled.next}
               flipX={true}
             />
-          </ControlsContainer>
+          </Controls>
         </Container>
       )}
       {!movies && (
         <Container>
           <SvgSingleWave2 />
           <TitleSlider> Últimos Agregados</TitleSlider>
-          <ControlsContainer>
-            <ButtonControl onClick={handleClickPrev} disabled={true} />
-            <ButtonControl
-              onClick={handleClickNext}
-              disabled={true}
-              flipX={true}
-            />
-          </ControlsContainer>
+          <Controls>
+            <ButtonControl disabled={true} />
+            <ButtonControl disabled={true} flipX={true} />
+          </Controls>
         </Container>
       )}
     </>
