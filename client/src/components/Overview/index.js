@@ -1,7 +1,7 @@
 import React from "react";
 import "./Overview.css";
 
-import ListTags from "../ListTags";
+import Tags from "../Tags";
 
 const Overview = ({
   overview,
@@ -17,11 +17,7 @@ const Overview = ({
       } `}
     >
       <p className="sm__overview">{overview}</p>
-      <ListTags
-        releaseDate={release_date}
-        typeMedia={typeMedia}
-        tags={genre_ids}
-      />
+      <Tags releaseDate={release_date} tags={genre_ids} />
     </div>
   );
 };

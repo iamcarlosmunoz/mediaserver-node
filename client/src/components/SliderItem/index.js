@@ -1,7 +1,7 @@
 import React from "react";
 
 import InfoRanking from "../InfoRanking";
-import ListTags from "../ListTags";
+import Tags from "../Tags";
 import ButtonDetail from "../ButtonDetail";
 
 import { Container, DegradedLayer, Info, Img } from "./styled";
@@ -16,9 +16,8 @@ const SliderItem = ({ current, item, media, typeMedia }) => {
       <Info>
         <h1>{media[media.length - item].title}</h1>
         <InfoRanking ranking={media[media.length - item].vote_average} />
-        <ListTags
+        <Tags
           releaseDate={media[media.length - item].release_date}
-          typeMedia={typeMedia}
           tags={media[media.length - item].genre_ids}
         />
       </Info>

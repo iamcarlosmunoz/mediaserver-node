@@ -8,6 +8,8 @@ export const Container = styled.div`
   height: 100%;
   opacity: ${({ active }) => (active ? 1 : 0)};
   transition: opacity 0.6s ease;
+  overflow: hidden;
+  border-radius: 10px;
 `;
 
 export const DegradedLayer = styled.div`
