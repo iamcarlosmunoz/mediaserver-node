@@ -1,18 +1,18 @@
 import React from "react";
-import "./InfoRanking.css";
-
-import Star from "./Star";
+import { ItemRanking, List } from "./styles";
+import { IconStar } from "../common/SvgIcons";
+import { theme } from "../../styles/index";
 
 const InfoRanking = ({ ranking }) => {
   return (
-    <div className="stars__list">
-      <span className="stars__rancking">{ranking}</span>
-      <Star starDark={ranking > 2} />
-      <Star starDark={ranking > 4} />
-      <Star starDark={ranking > 6} />
-      <Star starDark={ranking > 8} />
-      <Star starDark={ranking > 10} />
-    </div>
+    <List>
+      <ItemRanking>{ranking}</ItemRanking>
+      <IconStar active={ranking > 2} color={theme.colors.primary} />
+      <IconStar active={ranking > 4} color={theme.colors.primary} />
+      <IconStar active={ranking > 6} color={theme.colors.primary} />
+      <IconStar active={ranking > 8} color={theme.colors.primary} />
+      <IconStar active={ranking > 10} color={theme.colors.primary} />
+    </List>
   );
 };
 
