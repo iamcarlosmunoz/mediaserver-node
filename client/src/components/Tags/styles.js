@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 90%;
+  width: ${({ long }) => (long ? long : "60%")};
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
