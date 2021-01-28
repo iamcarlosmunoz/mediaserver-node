@@ -4,11 +4,9 @@ import "./VideoPlayer.css";
 import { ButtonPlayVideo, ButtonPauseVideo } from "./buttons";
 import useEventListener from "../../hooks/useEventListener";
 import Overview from "../../components/Overview";
-import useGlobalUser from "../../hooks/useGlobalUser";
 
 const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
   const [stateVideoPlayer, setStateVideoPlayer] = useState("pause");
-  const { updateMovieStatus, getTimeMovieWatching } = useGlobalUser();
   const [timeVideo, setTimeVideo] = useState({ timeCurrent: 0, time: 0 });
   const video = useRef(null);
   const containerInfo = useRef(null);
@@ -45,14 +43,6 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
   };
 
   const handleExitVideoPlayer = () => {
-    if (typeMedia === "movies") {
-      updateMovieStatus({
-        id: mediaData.id,
-        time: timeVideo.timeCurrent,
-        duration: timeVideo.time,
-      });
-    }
-
     setStateVideoPlayer("pause");
     toggleFullScreen(video.current);
     handleExit();
@@ -88,17 +78,13 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
   useEffect(
     function () {
       // Get latest playing time
-      if (typeMedia === "movies") {
-        const { timeCurrent } = getTimeMovieWatching(mediaData.id);
-        video.current.currentTime = timeCurrent;
-      }
 
       // Fullscreen and play video
       toggleFullScreen(containerVideo.current);
       setStateVideoPlayer("play");
       video.current.play();
     },
-    [getTimeMovieWatching, mediaData.id, typeMedia]
+    [mediaData.id, typeMedia]
   );
 
   useEventListener(video, "timeupdate", handleBarProgress);

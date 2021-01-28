@@ -6,6 +6,6 @@ const router = Router();
 
 router.get("/", moviesController.getMovies);
 router.get("/:id", verifyToken, moviesController.getMovieById);
-router.get("/file/:id", verifyToken, moviesController.getFileMovieById);
+router.get("/file/:id", moviesController.getFileMovieById);
 
 export default router;
