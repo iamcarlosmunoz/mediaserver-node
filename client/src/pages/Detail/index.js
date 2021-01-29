@@ -12,6 +12,13 @@ import MainLayout from "../../containers/MainLayout";
 import useGlobalUser from "../../hooks/useGlobalUser";
 import useGlobalMedia from "../../hooks/useGlobalMedia";
 
+import {
+  Container,
+  ContainerImage,
+  BackgroundImage,
+  DegradedSolidColor,
+} from "./styles";
+
 const setValueBarProgress = ({ bar, time, duration }) => {
   if (time > 0) {
     bar.current.style.width = (time / duration) * 100 + "%";
@@ -57,17 +64,14 @@ const Detail = ({ params }) => {
     <MainLayout>
       <MainSection>
         {media && (
-          <div className="sidebar">
-            <div className="sidebar__background">
-              <img
-                className="sidebar__img-bg"
+          <Container>
+            <ContainerImage>
+              <BackgroundImage
                 src={`https://image.tmdb.org/t/p/original${media.backdrop_path}`}
                 alt={media.title + "wallpaper"}
               />
-              <div className="sidebar__solid-color"></div>
-              <div className="sidebar__solid-color"></div>
-              <div className="sidebar__solid-color"></div>
-
+              <DegradedSolidColor />
+              <DegradedSolidColor />
               <div className="sidebar__content">
                 <button
                   className="sidebar__button-back"
@@ -125,8 +129,8 @@ const Detail = ({ params }) => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </ContainerImage>
+          </Container>
         )}
         {activePlayerVideo && (
           <VideoPlayer
