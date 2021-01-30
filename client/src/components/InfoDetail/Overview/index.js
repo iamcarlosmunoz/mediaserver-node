@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Paragraph } from "./styles";
 
-import Tags from "../Tags";
+import Tags from "../../Tags";
 
 const Overview = ({ overview, release_date, genre_ids, full = false }) => {
   return (

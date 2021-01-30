@@ -3,7 +3,6 @@ import "./VideoPlayer.css";
 
 import { ButtonPlayVideo, ButtonPauseVideo } from "./buttons";
 import useEventListener from "../../hooks/useEventListener";
-import Overview from "../../components/Overview";
 
 const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
   const [stateVideoPlayer, setStateVideoPlayer] = useState("pause");
@@ -117,13 +116,6 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
         />
         <div className="video-player__container-info">
           <h2 className="video-player__title">{mediaData.title}</h2>
-          <Overview
-            overview={mediaData.overview}
-            release_date={mediaData.release_date}
-            typeMedia={typeMedia}
-            genre_ids={mediaData.genre_ids}
-            full={true}
-          />
         </div>
       </div>
       <div
