@@ -3,7 +3,6 @@ import { useLocation } from "wouter";
 import "./Detail.css";
 
 import MainSection from "../../components/MainSection";
-import InfoRanking from "../../components/InfoRanking";
 import VideoPlayer from "../../components/VideoPlayer";
 import ButtonCheck from "../../components/ButtonCheck";
 import ButtonNormal from "../../components/ButtonNormal";
@@ -18,8 +17,10 @@ import {
   BackgroundImage,
   DegradedSolidColor,
   Content,
+  Section,
 } from "./styles";
 import ButtonControl from "../../components/ButtonControl";
+import PosterImage from "../../components/PosterImage";
 
 const setValueBarProgress = ({ bar, time, duration }) => {
   if (time > 0) {
@@ -76,23 +77,13 @@ const Detail = ({ params }) => {
               <DegradedSolidColor />
               <Content>
                 <ButtonControl background={false} onClick={handleOnClick} />
-                <div className="sidebar__header">
-                  <div className="sidebar__poster">
-                    <div className="sidebar__poster-container">
-                      <div className="sidebar__card">
-                        <img
-                          className="sidebar__card-img"
-                          src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
-                          alt={media.title}
-                        />
-                        <span className="sidebar__card-info">
-                          {typeMedia === "movies" && "Película"}
-                          {typeMedia === "series" && "Serie"}
-                        </span>
-                      </div>
-                      <InfoRanking ranking={media.vote_average} />
-                    </div>
-                  </div>
+                <Section>
+                  <PosterImage
+                    poster_path={media.poster_path}
+                    title={media.title}
+                    typeMedia={typeMedia}
+                    vote_average={media.vote_average}
+                  />
                   <div className="sidebar__info">
                     <div className="sidebar__container--title">
                       <h2 className="sidebar__title">{media.title}</h2>
@@ -117,7 +108,7 @@ const Detail = ({ params }) => {
                       <ButtonCheck />
                     </div>
                   </div>
-                </div>
+                </Section>
               </Content>
             </ContainerImage>
           </Container>
