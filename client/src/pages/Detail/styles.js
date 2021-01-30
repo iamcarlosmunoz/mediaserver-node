@@ -42,3 +42,26 @@ export const DegradedSolidColor = styled.div`
   height: 100%;
   background: linear-gradient(transparent, #000);
 `;
+
+export const Content = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Section = styled.section`
+  position: absolute;
+  left: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;

@@ -1,8 +1,9 @@
 import React from "react";
-import { Control } from "./styles";
+import { Control, ControlBackground } from "./styles";
 import { IconBack } from "../common/SvgIcons";
 
 const ButtonControl = ({
+  background = true,
   flipX = false,
   children = null,
   onClick,
@@ -13,9 +14,22 @@ const ButtonControl = ({
   };
 
   return (
-    <Control onClick={handleClick} flipX={flipX} disabled={disabled}>
-      {children ? children : <IconBack />}
-    </Control>
+    <>
+      {background && (
+        <ControlBackground
+          onClick={handleClick}
+          flipX={flipX}
+          disabled={disabled}
+        >
+          {children ? children : <IconBack />}
+        </ControlBackground>
+      )}
+      {!background && (
+        <Control onClick={handleClick}>
+          <IconBack />
+        </Control>
+      )}
+    </>
   );
 };
 

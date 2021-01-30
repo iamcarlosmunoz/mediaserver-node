@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../styles/index";
 
-export const Control = styled.button`
+export const ControlBackground = styled.button`
   background: ${theme.colors.primary};
   width: 3em;
   height: 3em;
@@ -28,5 +28,28 @@ export const Control = styled.button`
 
   & svg path {
     fill: ${theme.colors.textDark};
+  }
+`;
+
+export const Control = styled.button`
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  margin-top: 2em;
+  margin-left: 2em;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  z-index: 1;
+
+  & path {
+    fill: #fff;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover path {
+    opacity: 1;
   }
 `;
