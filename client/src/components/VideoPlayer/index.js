@@ -1,35 +1,46 @@
 import React, { useState, useRef, useEffect } from "react";
+import { VideoContainer, VideoElement } from "./styles";
 import "./VideoPlayer.css";
 
 import { ButtonPlayVideo, ButtonPauseVideo } from "./buttons";
-import useEventListener from "../../hooks/useEventListener";
+
+const toggleFullScreen = (element) => {
+  if (!document.fullscreenElement) {
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+};
+
+const secondsToString = (seconds) => {
+  let hour = Math.floor(seconds / 3600);
+  hour = hour < 10 ? "0" + hour : hour;
+
+  let minute = Math.floor((seconds / 60) % 60);
+  minute = minute < 10 ? "0" + minute : minute;
+
+  let second = seconds % 60;
+  second = second < 10 ? "0" + second : second;
+
+  return hour + ":" + minute + ":" + second;
+};
 
 const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
   const [stateVideoPlayer, setStateVideoPlayer] = useState("pause");
   const [timeVideo, setTimeVideo] = useState({ timeCurrent: 0, time: 0 });
   const video = useRef(null);
-  const containerInfo = useRef(null);
-  const containerVideo = useRef(null);
-  const containerProgressBarVideoPlayer = useRef(null);
-  const progressBarVideoPlayer = useRef(null);
-
-  const toggleFullScreen = (element) => {
-    if (!document.fullscreenElement) {
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
-    }
-  };
+  const videoContainer = useRef(null);
+  const BarProgressVideo = useRef(null);
 
   const handlePlayPauseVideo = () => {
     if (stateVideoPlayer === "pause") {
@@ -49,7 +60,7 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
 
   const handleBarProgress = () => {
     let progress = video.current.currentTime / video.current.duration;
-    progressBarVideoPlayer.current.style.width = progress * 100 + "%";
+    BarProgressVideo.current.style.width = progress * 100 + "%";
 
     setTimeVideo({
       timeCurrent: video.current.currentTime,
@@ -61,17 +72,9 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
     }
   };
 
-  const secondsToString = (seconds) => {
-    let hour = Math.floor(seconds / 3600);
-    hour = hour < 10 ? "0" + hour : hour;
-
-    let minute = Math.floor((seconds / 60) % 60);
-    minute = minute < 10 ? "0" + minute : minute;
-
-    let second = seconds % 60;
-    second = second < 10 ? "0" + second : second;
-
-    return hour + ":" + minute + ":" + second;
+  const handleBarProgressClick = (e) => {
+    let pos = (e.pageX - e.target.offsetLeft) / e.target.offsetWidth;
+    video.current.currentTime = pos * video.current.duration;
   };
 
   useEffect(
@@ -79,31 +82,24 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
       // Get latest playing time
 
       // Fullscreen and play video
-      toggleFullScreen(containerVideo.current);
+      toggleFullScreen(videoContainer.current);
       setStateVideoPlayer("play");
       video.current.play();
     },
     [mediaData.id, typeMedia]
   );
 
-  useEventListener(video, "timeupdate", handleBarProgress);
-  useEventListener(video, "click", handlePlayPauseVideo);
-  useEventListener(containerInfo, "click", handlePlayPauseVideo);
-  useEventListener(containerProgressBarVideoPlayer, "click", function (e) {
-    let pos = (e.pageX - this.offsetLeft) / this.offsetWidth;
-    video.current.currentTime = pos * video.current.duration;
-  });
-
   return (
-    <div className="video-player" ref={containerVideo}>
-      <video
+    <VideoContainer ref={videoContainer}>
+      <VideoElement
         ref={video}
-        className="video-player__source"
         preload="auto"
+        onTimeUpdate={handleBarProgress}
+        onClick={handlePlayPauseVideo}
         src={`/api/${typeMedia}/file/${mediaData.id}`}
-      ></video>
+      ></VideoElement>
       <div
-        ref={containerInfo}
+        onClick={handlePlayPauseVideo}
         className={`video-player__container-title ${
           stateVideoPlayer === "pause" &&
           " video-player__container-title--hover"
@@ -132,17 +128,17 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
         <div
           className="video-player__bar-container"
           role="presentation"
-          ref={containerProgressBarVideoPlayer}
+          onClick={handleBarProgressClick}
         >
           <div
             className="video-player__bar-progress"
-            ref={progressBarVideoPlayer}
+            ref={BarProgressVideo}
           ></div>
         </div>
         <div className="video-player__buttons">
           {timeVideo.time !== 0 && (
             <span className="video-player__time">{`${secondsToString(
-              Math.floor(timeVideo.timeCurrent)
+              Math.floor(video.current.currentTime)
             )} / ${secondsToString(Math.floor(timeVideo.time))}`}</span>
           )}
           {timeVideo.time === 0 && (
@@ -165,7 +161,7 @@ const VideoPlayer = ({ typeMedia, mediaData, handleExit }) => {
           </button>
         </div>
       </div>
-    </div>
+    </VideoContainer>
   );
 };
 
