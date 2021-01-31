@@ -4,8 +4,8 @@ import { theme } from "../../styles/index";
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  height: calc(100vh - 8.625em);
-  max-height: calc(100vh - 8.625em);
+  height: calc(100vh - 10.625em);
+  max-height: calc(100vh - 10.625em);
   display: flex;
   border-radius: 20px;
   overflow: hidden;
