@@ -11,3 +11,9 @@ And start the development server with:
 ```
 npm run dev
 ```
+```
+cd client/
+```
+```
+npm run start
+```
