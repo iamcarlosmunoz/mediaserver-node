@@ -11,6 +11,7 @@ And start the development server with:
 ```
 npm run dev
 ```
+And start the development server for front-end with:
 ```
 cd client/
 ```
